@@ -1,0 +1,6 @@
+#ifndef ICON_RC
+#define ICON_RC
+
+rubix_cube ICON "Rubix_Cube.ico"
+
+#endif
