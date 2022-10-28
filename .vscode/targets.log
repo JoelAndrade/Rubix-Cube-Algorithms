@@ -5,9 +5,8 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sat Oct 22 11:29:09 2022
+# Make data base, printed on Fri Oct 28 09:16:26 2022
 
 # Variables
 
@@ -44,7 +43,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8328_YOOIACRXEQKMMDSK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_884_FERANZSLZKFKUPFR
 # environment
 ONEDRIVECOMMERCIAL = D:\Joel\OneDrive - csulb
 # environment
@@ -60,7 +59,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\64bbfbf67ada9953918d72e1df2f4d8e537d340e
+VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\d045a5eda657f4d7b676dedbfa7aab8207f8a075
 # environment
 LANG = C
 # default
@@ -96,7 +95,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 8328
+VSCODE_PID = 884
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -173,8 +172,6 @@ USERDOMAIN = DESKTOP-CC2GQSO
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
-# environment
-__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
 # default
@@ -204,7 +201,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\Joel\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\b746cc3fc41d8915bea4c05e9b318066-1.72.0-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\b746cc3fc41d8915bea4c05e9b318066-1.72.2-main-sock
 # environment
 GOOGLE_DEFAULT_CLIENT_SECRET = no
 # default
@@ -224,7 +221,7 @@ PROCESSOR_REVISION = 5e03
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 # variable set hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=9/136=7%
+# Load=105/1024=10%, Rehash=0, Collisions=9/135=7%
 
 # Pattern-specific Variable Values
 
@@ -232,10 +229,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1660004081): 19 files, no imposs 
-ibilities.
+# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1666562068): 22 files, no impossibilities.
 
-# 19 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -246,7 +242,7 @@ ibilities.
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 02:59:34
+#  Last modified 2022-10-23 10:38:17
 #  File has been updated.
 #  Successfully updated.
 
@@ -260,8 +256,7 @@ all:
 #  Command line target.
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
-#   
-File does not exist.
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -283,8 +278,7 @@ File does not exist.
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
 #  recipe to execute (from 'Makefile', line 2):
-	g++ -I src/include -I Images -I Fonts -I src/Classes_and_Functions -L src/lib -o main main.cpp -l mingw32 -l SDL2main -l SDL2 -l SDL2_imag 
-e -l SDL2_ttf
+	g++ -I src/include -I Images -I Fonts -I src/Classes_and_Functions -I cube -L src/lib -o main main.cpp -l mingw32 -l SDL2main -l SDL2 -l SDL2_image -l SDL2_ttf
 
 # Not a target:
 .SUFFIXES:
@@ -300,12 +294,12 @@ e -l SDL2_ttf
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 203 B / avg = 9 B
-# current buf: size = 8174 B / used = 203 B / count = 22 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 25 / storage = 220 B / avg = 8 B
+# current buf: size = 8174 B / used = 220 B / count = 25 / avg = 8 B
 
-# strcache performance: lookups = 29 / hit rate = 24%
+# strcache performance: lookups = 32 / hit rate = 21%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Sat Oct 22 11:29:09 2022
+# Load=25/8192=0%, Rehash=0, Collisions=0/32=0%
+# Finished Make data base on Fri Oct 28 09:16:26 2022
 
  

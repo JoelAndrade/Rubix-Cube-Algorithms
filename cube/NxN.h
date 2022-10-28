@@ -1,11 +1,35 @@
+#include <iostream>
+#include <SDL_CLasses.h>
+#include "../main.h"
+
+#ifndef NXN_H
+#define NXN_H
+
 class xx2 {
     public:
+        SDL_Rect rect;
+        
+        xx2() {
+            rect = {0, blockLength, blockLength, blockLength};
+            rect.makeDimensions();
+        }
         void fixString() {
-            
+
         }
 
-        void U() {
+        void U(int size) {
+            window.fillRect(&green, rect);
 
+            for (int i = 1; i < size; ++i) {
+                window.drawLine(rect.x + (blockLength*i)/size, rect.y, rect.x + (blockLength*i)/size, rect.bottomY, &black, 3, 1);
+                window.drawLine(rect.x, rect.y + (blockLength*i)/size, rect.rightX, rect.y + (blockLength*i)/size, &black, 1, 3);
+            }
+
+            // window.drawLine(rect.x + blockLength/3, rect.y, rect.x + blockLength/3, rect.bottomY, &black, 3 , 1);
+            // window.drawLine(rect.x + blockLength*2/3, rect.y, rect.x + blockLength*2/3, rect.y + blockLength, &black, 3, 1);
+            // window.drawLine(rect.x, rect.y + blockLength/3, rect.x + blockLength, rect.y + blockLength/3, &black, 1, 3);
+            // window.drawLine(rect.x, rect.y + blockLength*2/3, rect.x + blockLength, rect.y + blockLength*2/3, &black, 1, 3);
+            window.drawRect(&violet, rect, 3, 3);
         }
         void UPrime() {
 
@@ -213,3 +237,4 @@ class x7 {
                 
             }
 };
+#endif

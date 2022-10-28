@@ -1,15 +1,17 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL_CLasses.h>
-#include <SDL_Functions.h>
 #include "main.h"
-#include <cube.h>
 
-win window("Loading Algorithm", windowWidth, windowHeight);
+std::string loadText = "R U2 R2 F R F' U2 R' F R F'";
+
+int mode = X3;
+
+const int numPoints = 9;
+SDL_Point points[numPoints] = {
+    {100, 50}, {200, 50}, {300, 50},
+    {100, 150}, {200, 150}, {300, 150},
+    {100, 250}, {200, 250}, {300, 250}
+};
+
+
 Uint32 startingTick;
 SDL_Event event;
 
@@ -19,149 +21,8 @@ cube myCube(loadText);
 
 int x = 0;
 int y = 0;
-SDL_Rect rect = {blockLength*x, blockLength*(y+1), blockLength, blockLength};
+SDL_Rect rect = {blockLength*(x + 2), blockLength*(y + 2), blockLength, blockLength};
 SDL_Rect topRect = {0, 0, window.w, blockLength};
-
-
-SDL_Color violet = {255, 0, 255};
-SDL_Color green = {0, 255, 0};
-SDL_Color blue = {0, 0, 255};
-SDL_Color black = {0, 0, 0};
-
-
-void drawScreen() {
-    int x = 0;
-    myCube.text = text.text;
-    myCube.fixString(mode);
-    for (int i = 0; i < myCube.text.length(); ++i) {
-        if (myCube.text.find("U'", i)) {
-            myCube.Xx3.UPrime();
-        }
-        else if (myCube.text.find("u'", i)) {
-            myCube.Xx3.uPrime();
-        }
-        else if (myCube.text.find("U2", i)) {
-            myCube.Xx3.U2();
-        }
-        else if (myCube.text.find("U", i)) {
-            myCube.Xx3.U();
-        }
-        else if (myCube.text.find("u", i)) {
-            myCube.Xx3.u();
-        }
-
-        else if (myCube.text.find("D'", i)) {
-            myCube.Xx3.DPrime();
-        }
-        else if (myCube.text.find("d'", i)) {
-            myCube.Xx3.dPrime();
-        }
-        else if (myCube.text.find("D2", i)) {
-            myCube.Xx3.D2();
-        }
-        else if (myCube.text.find("D", i)) {
-            myCube.Xx3.D();
-        }
-        else if (myCube.text.find("d", i)) {
-            myCube.Xx3.d();
-        }
-
-        else if (myCube.text.find("L'", i)) {
-            myCube.Xx3.LPrime();
-        }
-        else if (myCube.text.find("l'", i)) {
-            myCube.Xx3.lPrime();
-        }
-        else if (myCube.text.find("L2", i)) {
-            myCube.Xx3.L2();
-        }
-        else if (myCube.text.find("L", i)) {
-            myCube.Xx3.L();
-        }
-        else if (myCube.text.find("l", i)) {
-            myCube.Xx3.l();
-        }
-
-        else if (myCube.text.find("R'", i)) {
-            myCube.Xx3.LPrime();
-        }
-        else if (myCube.text.find("r'", i)) {
-            myCube.Xx3.rPrime();
-        }
-        else if (myCube.text.find("R2", i)) {
-            myCube.Xx3.R2();
-        }
-        else if (myCube.text.find("R", i)) {
-            myCube.Xx3.R();
-        }
-        else if (myCube.text.find("r", i)) {
-            myCube.Xx3.r();
-        }
-        
-        else if (myCube.text.find("F'", i)) {
-            myCube.Xx3.FPrime();
-        }
-        else if (myCube.text.find("f'", i)) {
-            myCube.Xx3.fPrime();
-        }
-        else if (myCube.text.find("F2", i)) {
-            myCube.Xx3.F2();
-        }
-        else if (myCube.text.find("F", i)) {
-            myCube.Xx3.F();
-        }
-        else if (myCube.text.find("f", i)) {
-            myCube.Xx3.f();
-        }
-        
-        else if (myCube.text.find("B'", i)) {
-            myCube.Xx3.BPrime();
-        }
-        else if (myCube.text.find("b'", i)) {
-            myCube.Xx3.bPrime();
-        }
-        else if (myCube.text.find("B2", i)) {
-            myCube.Xx3.B2();
-        }
-        else if (myCube.text.find("B", i)) {
-            myCube.Xx3.B();
-        }
-        else if (myCube.text.find("b", i)) {
-            myCube.Xx3.b();
-        }
-        
-        else if (myCube.text.find("x'", i)) {
-            myCube.Xx3.xPrime();
-        }
-        else if (myCube.text.find("x2", i)) {
-            myCube.Xx3.x2();
-        }
-        else if (myCube.text.find("x", i)) {
-            myCube.Xx3.x();
-        }
-        
-        else if (myCube.text.find("y'", i)) {
-            myCube.Xx3.yPrime();
-        }
-        else if (myCube.text.find("y2", i)) {
-            myCube.Xx3.y2();
-        }
-        else if (myCube.text.find("y", i)) {
-            myCube.Xx3.y();
-        }
-        
-        else if (myCube.text.find("z'", i)) {
-            myCube.Xx3.zPrime();
-        }
-        else if (myCube.text.find("z2", i)) {
-            myCube.Xx3.z2();
-        }
-        else if (myCube.text.find("z", i)) {
-            myCube.Xx3.z();
-        }
-        
-    }
-}
 
 int main(int argc, char* args[]) {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -169,15 +30,13 @@ int main(int argc, char* args[]) {
     IMG_Init(IMG_INIT_JPG);
     TTF_Init();
 
-    std::cout << myCube.text << std::endl;
-    myCube.fixString(X3);
-    std::cout << myCube.text << std::endl;
-
     text.setup(window.renderer, "Fonts/times.ttf", myCube.text.c_str(), 50, window.w/2, blockLength/2);
     text.color = {255, 255, 255, 255};
     text.createTexture(window.renderer);
     text.rect.shiftXY();
     std::cout << mode << std::endl;
+
+    rect.makeDimensions();
 
     while (mode) {
         if (mode == MAINMENU) {
@@ -253,23 +112,167 @@ int algorithmImages() {
 
         window.clearRender();
 
-        window.fillRect(&green, rect);
-        window.drawLine(rect.x + blockLength/3, rect.y, rect.x + blockLength/3, rect.y + blockLength, &black);
-        window.drawLine(rect.x + blockLength*2/3, rect.y, rect.x + blockLength*2/3, rect.y + blockLength, &black);
-        window.drawLine(rect.x, rect.y + blockLength/3, rect.x + blockLength, rect.y + blockLength/3, &black);
-        window.drawLine(rect.x, rect.y + blockLength*2/3, rect.x + blockLength, rect.y + blockLength*2/3, &black);
-        window.drawRect(&violet, rect);
+        myCube.fixString(text.text, mode);
+        myCube.drawCube(mode);
+
+
+
+
+
+        //drawScreen3x3();
+
+
+        // window.fillRect(&green, rect);
+        // window.drawLine(rect.x + blockLength/3, rect.y, rect.x + blockLength/3, rect.bottomY, &black, 3 , 1);
+        // window.drawLine(rect.x + blockLength*2/3, rect.y, rect.x + blockLength*2/3, rect.y + blockLength, &black, 3, 1);
+        // window.drawLine(rect.x, rect.y + blockLength/3, rect.x + blockLength, rect.y + blockLength/3, &black, 1, 3);
+        // window.drawLine(rect.x, rect.y + blockLength*2/3, rect.x + blockLength, rect.y + blockLength*2/3, &black, 1, 3);
+        // window.drawRect(&violet, rect, 3, 3);
         
 
 
-        window.drawRect(&violet);
-        window.drawRect(&violet, topRect);
+        window.drawRect(&violet, 3, 3);
+        window.drawRect(&violet, topRect, 3, 3);
         text.render(window.renderer);
         SDL_RenderPresent(window.renderer);
     }
     SDL_StopTextInput();
     return QUIT;
 }
+
+void drawScreen3x3() {
+    myCube.text = text.text;
+    //myCube.fixString(mode);
+    for (int i = 0; i < myCube.text.length(); ++i) {
+        if (i == myCube.text.find("U'", i)) {
+            myCube.Xx3.UPrime();
+        }
+        else if (i == myCube.text.find("u'", i)) {
+            myCube.Xx3.uPrime();
+        }
+        else if (i == myCube.text.find("U2", i)) {
+            myCube.Xx3.U2();
+        }
+        else if (i == myCube.text.find("U", i)) {
+            myCube.Xx3.U(4);
+        }
+        else if (i == myCube.text.find("u", i)) {
+            myCube.Xx3.u();
+        }
+
+        else if (i == myCube.text.find("D'", i)) {
+            myCube.Xx3.DPrime();
+        }
+        else if (i == myCube.text.find("d'", i)) {
+            myCube.Xx3.dPrime();
+        }
+        else if (i == myCube.text.find("D2", i)) {
+            myCube.Xx3.D2();
+        }
+        else if (i == myCube.text.find("D", i)) {
+            myCube.Xx3.D();
+        }
+        else if (i == myCube.text.find("d", i)) {
+            myCube.Xx3.d();
+        }
+
+        else if (i == myCube.text.find("L'", i)) {
+            myCube.Xx3.LPrime();
+        }
+        else if (i == myCube.text.find("l'", i)) {
+            myCube.Xx3.lPrime();
+        }
+        else if (i == myCube.text.find("L2", i)) {
+            myCube.Xx3.L2();
+        }
+        else if (i == myCube.text.find("L", i)) {
+            myCube.Xx3.L();
+        }
+        else if (i == myCube.text.find("l", i)) {
+            myCube.Xx3.l();
+        }
+
+        else if (i == myCube.text.find("R'", i)) {
+            myCube.Xx3.LPrime();
+        }
+        else if (i == myCube.text.find("r'", i)) {
+            myCube.Xx3.rPrime();
+        }
+        else if (i == myCube.text.find("R2", i)) {
+            myCube.Xx3.R2();
+        }
+        else if (i == myCube.text.find("R", i)) {
+            myCube.Xx3.R();
+        }
+        else if (myCube.text.find("r", i)) {
+            myCube.Xx3.r();
+        }
+        
+        else if (i == myCube.text.find("F'", i)) {
+            myCube.Xx3.FPrime();
+        }
+        else if (i == myCube.text.find("f'", i)) {
+            myCube.Xx3.fPrime();
+        }
+        else if (i == myCube.text.find("F2", i)) {
+            myCube.Xx3.F2();
+        }
+        else if (i == myCube.text.find("F", i)) {
+            myCube.Xx3.F();
+        }
+        else if (i == myCube.text.find("f", i)) {
+            myCube.Xx3.f();
+        }
+        
+        else if (i == myCube.text.find("B'", i)) {
+            myCube.Xx3.BPrime();
+        }
+        else if (i == myCube.text.find("b'", i)) {
+            myCube.Xx3.bPrime();
+        }
+        else if (i == myCube.text.find("B2", i)) {
+            myCube.Xx3.B2();
+        }
+        else if (i == myCube.text.find("B", i)) {
+            myCube.Xx3.B();
+        }
+        else if (i == myCube.text.find("b", i)) {
+            myCube.Xx3.b();
+        }
+        
+        else if (i == myCube.text.find("x'", i)) {
+            myCube.Xx3.xPrime();
+        }
+        else if (i == myCube.text.find("x2", i)) {
+            myCube.Xx3.x2();
+        }
+        else if (i == myCube.text.find("x", i)) {
+            myCube.Xx3.x();
+        }
+        
+        else if (i == myCube.text.find("y'", i)) {
+            myCube.Xx3.yPrime();
+        }
+        else if (i == myCube.text.find("y2", i)) {
+            myCube.Xx3.y2();
+        }
+        else if (i == myCube.text.find("y", i)) {
+            myCube.Xx3.y();
+        }
+        
+        else if (i == myCube.text.find("z'", i)) {
+            myCube.Xx3.zPrime();
+        }
+        else if (i == myCube.text.find("z2", i)) {
+            myCube.Xx3.z2();
+        }
+        else if (i == myCube.text.find("z", i)) {
+            myCube.Xx3.z();
+        }
+        
+    }
+}
+
         // window.fillRect(&green, rect);        
 
 

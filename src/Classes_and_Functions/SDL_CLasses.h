@@ -1,6 +1,3 @@
-#ifndef SDL_CLASSES_H
-#define SDL_CLASSES_H
-
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -9,8 +6,11 @@
 #include <SDL2/SDL_ttf.h>
 #include <fstream>
 
-#define renderColor 0, 0, 0, 0xFF
+#ifndef SDL_CLASSES_H
+#define SDL_CLASSES_H
 
+#define renderColor 0, 0, 0, 0xFF // black background
+//#define renderColor 255, 255, 255, 0xFF // white background
 class win {
     public:
         int w;
@@ -69,16 +69,28 @@ class win {
             SDL_SetRenderDrawColor(renderer, renderColor);
             SDL_RenderClear(renderer);
         }
-        void drawLine(int x1, int y1, int x2, int y2, SDL_Color* color, float xScale = 1, float yScale = 1) {
+        void drawLine(int x1, int y1, int x2, int y2, SDL_Color* color, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
+                std::cout << "Your Color Was NULL" << std::endl;
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
             else {
                 SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, color->a);
             }
+            if (xScale < 1) {
+                xScale = 1;
+            }
+            if (yScale < 1) {
+                yScale = 1;
+            }
 
             xScale -= 1;
             yScale -= 1;
+
+            x1 = x1 - xScale;
+            y1 = y1 - yScale;
+            x2 = x2 - xScale;
+            y2 = y2 - yScale;
 
             for (int i = 0; x1 - xScale + i < x1 + xScale + 1; ++i) {
                 SDL_RenderDrawLine(renderer, x1 + i, y1, x2 + i, y2);
@@ -87,40 +99,73 @@ class win {
                 SDL_RenderDrawLine(renderer, x1, y1 + i, x2, y2 + i);
             }            
         }
-        void drawRect(SDL_Color* color, SDL_Rect rect, float xScale = 1, float yScale = 1) {
+        void drawRect(SDL_Color* color, SDL_Rect rect, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
             else {
                 SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, color->a);
             }
-            SDL_RenderDrawRect(renderer, &rect);
+            if (xScale < 1) {
+                xScale = 1;
+            }
+            if (yScale < 1) {
+                yScale = 1;
+            }
+
+            xScale -= 1;
+            yScale -= 1;
+
+            SDL_Rect tempRect = rect;
+            tempRect.x = tempRect.x - xScale;
+            tempRect.y = tempRect.y - yScale;
+            for (int i = 0; rect.x - xScale + i < rect.x + xScale + 1; ++i) {
+                SDL_RenderDrawRect(renderer, &tempRect);
+                ++tempRect.x;
+            }
+            tempRect = rect;
+            tempRect.x = tempRect.x - xScale;
+            tempRect.y = tempRect.y - yScale;            
+            for (int i = 0; rect.y - yScale + i < rect.y + yScale + 1; ++i) {
+                SDL_RenderDrawRect(renderer, &tempRect);
+                ++tempRect.y;
+            }
+            tempRect = rect;
+            tempRect.x = tempRect.x + xScale;
+            tempRect.y = tempRect.y + yScale;            
+            for (int i = 0; rect.y - yScale - 1 < rect.y + yScale + i; --i) {
+                SDL_RenderDrawRect(renderer, &tempRect);
+                --tempRect.y;
+            }
         }
-        void drawRect(SDL_Color* color, float xScale = 1, float yScale = 1) {
+        void drawRect(SDL_Color* color, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
             else {
                 SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, color->a);
             }
+            if (xScale < 1) {
+                xScale = 1;
+            }
+            if (yScale < 1) {
+                yScale = 1;
+            }
+
             SDL_RenderSetScale(renderer, xScale, yScale);
             SDL_RenderDrawRect(renderer, NULL);
             SDL_RenderSetScale(renderer, 1, 1);
         }
-        void fillRect(SDL_Color* color, SDL_Rect rect, float xScale = 1, float yScale = 1) {
+        void fillRect(SDL_Color* color, SDL_Rect rect, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
             else {
                 SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, color->a);
             }
-            SDL_RenderSetScale(renderer, xScale, yScale);
-            rect.x = round(rect.x/xScale);
-            rect.y = round(rect.y/yScale);
-            rect.w = round(rect.w/xScale);
-            rect.h = round(rect.h/yScale);
+            rect.w = rect.w + 1;
+            rect.h = rect.h + 1;
             SDL_RenderFillRect(renderer, &rect);
-            SDL_RenderSetScale(renderer, 1, 1);
         }
         void fillRect(SDL_Color* color, float xScale = 1, float yScale = 1) {
             if (color == NULL) {
