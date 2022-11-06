@@ -99,6 +99,47 @@ class win {
                 SDL_RenderDrawLine(renderer, x1, y1 + i, x2, y2 + i);
             }            
         }
+        void drawLines(SDL_Point points[], SDL_Color* color, int numPoints, int xScale = 1, int yScale = 1) {
+            if (color == NULL) {
+                std::cout << "Your Color Was NULL" << std::endl;
+                SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+            }
+            else {
+                SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, color->a);
+            }
+            if (xScale < 1) {
+                xScale = 1;
+            }
+            if (yScale < 1) {
+                yScale = 1;
+            }
+
+            xScale -= 1;
+            yScale -= 1; 
+
+            for (int i = 0; i < numPoints; ++i) {
+                points[i].x -= xScale;
+                points[i].y -= yScale;
+            }
+
+            for (int i = 0; points[0].x - xScale + i < points[0].x + xScale + 1; ++i) {
+                for (int i = 0; points[0].y - yScale + i < points[0].y + yScale + 1; ++i) {
+                    SDL_RenderDrawLines(renderer, points, numPoints);
+                    for (int j = 0; j < numPoints; ++j) {
+                        ++points[j].y;
+                    }
+                }
+                for (int j = 0; j < numPoints; ++j) {
+                    points[j].y -=  (2*yScale) + 1;
+                    ++points[j].x;
+                }
+            }
+
+            for (int i = 0; i < numPoints; ++i) {
+                points[i].x -= xScale + 1;
+                points[i].y += yScale;
+            }
+        }
         void drawRect(SDL_Color* color, SDL_Rect rect, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -403,6 +444,11 @@ class win {
             }
         };
 };
+
+
+
+
+
 
 class file {
     public:

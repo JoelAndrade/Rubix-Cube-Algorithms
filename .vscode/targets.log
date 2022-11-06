@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Oct 28 09:16:26 2022
+# Make data base, printed on Sun Nov 06 11:09:01 2022
 
 # Variables
 
@@ -43,7 +44,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_884_FERANZSLZKFKUPFR
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2940_LVQDUIDTGQWZABAC
 # environment
 ONEDRIVECOMMERCIAL = D:\Joel\OneDrive - csulb
 # environment
@@ -59,7 +60,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\d045a5eda657f4d7b676dedbfa7aab8207f8a075
+VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\8fa188b2b301d36553cbc9ce1b0a146ccb93351f
 # environment
 LANG = C
 # default
@@ -95,7 +96,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 884
+VSCODE_PID = 2940
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -172,6 +173,8 @@ USERDOMAIN = DESKTOP-CC2GQSO
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
 # default
@@ -201,7 +204,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\Joel\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\b746cc3fc41d8915bea4c05e9b318066-1.72.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\b746cc3fc41d8915bea4c05e9b318066-1.73.0-main-sock
 # environment
 GOOGLE_DEFAULT_CLIENT_SECRET = no
 # default
@@ -221,7 +224,7 @@ PROCESSOR_REVISION = 5e03
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=9/135=7%
+# Load=106/1024=10%, Rehash=0, Collisions=9/136=7%
 
 # Pattern-specific Variable Values
 
@@ -229,7 +232,8 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1666562068): 22 files, no impossibilities.
+# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1667695238): 22 files, no imposs 
+ibilities.
 
 # 22 files, no impossibilities in 1 directories.
 
@@ -242,7 +246,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-10-23 10:38:17
+#  Last modified 2022-10-23 09:38:17
 #  File has been updated.
 #  Successfully updated.
 
@@ -300,6 +304,6 @@ all:
 # strcache performance: lookups = 32 / hit rate = 21%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Fri Oct 28 09:16:26 2022
+# Finished Make data base on Sun Nov 06 11:09:01 2022
 
  

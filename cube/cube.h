@@ -24,6 +24,7 @@ class cube {
             text = textVal;
         }
 
+        // Fixes the string for the given cube size
         void fixString(std::string newText, int cubeSize) {
             text = newText;
             if (cubeSize == 2) {
@@ -51,6 +52,7 @@ class cube {
             }            
         }
 
+        // Fills the square and and adds the lines
         void drawCube(int cubeSize) {
             rect = {0, blockLength, blockLength, blockLength};
             rect.makeDimensions();
@@ -76,6 +78,7 @@ class cube {
             drawArrow(cubeSize);
         }
 
+        // Draw arrow on the cube
         void drawArrow(int cubeSize) {
 
             rect = {0, blockLength, blockLength, blockLength};
@@ -178,6 +181,7 @@ class cube {
             }
         }
 
+        // Set up the next rect to be drawn
         void nextRect() {
             if (rect.rightX != windowWidth) {
                 rect.x = rect.x + blockLength;
