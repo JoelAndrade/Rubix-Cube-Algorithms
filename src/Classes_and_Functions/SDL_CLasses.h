@@ -24,14 +24,14 @@ class win {
             h = heightVal;
             window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN);
             renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_SetRenderDrawColor(renderer, renderColor);
         }
         win(const char* title, int widthVal, int heightVal) {
             w = widthVal;
             h = heightVal;
             window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN);
             renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_SetRenderDrawColor(renderer, renderColor);
         }
 
         void setWindowSize(int widthVal, int heightVal) {
@@ -430,11 +430,11 @@ class win {
                 }
             }
 
-            void changColor(int r, int g, int b, int a = 255) {
-                color.r = r;
-                color.g = g;
-                color.b = b;
-                color.a = a;
+            void changeColor(SDL_Color* colorVal) {
+                color.r = colorVal->a;
+                color.g = colorVal->g;
+                color.b = colorVal->b;
+                color.a = colorVal->a;
             }
 
             void changeFont(const char* fontFileVal) {

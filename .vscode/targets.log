@@ -7,12 +7,10 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Sun Nov 20 18:28:24 2022
+# Make data base, printed on Sun Nov 20 21:15:35 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 RABBITMQ_BASE = C:\ProgramData\RabbitMQ
 # environment
@@ -44,11 +42,9 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_15764_GVMHDJOJEWURCQES
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16664_GOEEYPFDSUPGONCG
 # environment
 ONEDRIVECOMMERCIAL = D:\Joel\OneDrive - csulb
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -60,8 +56,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\8fa188b2b301d36553cbc9ce1b0a146ccb9 
-3351f
+VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\6261075646f055b99068d3688932416f2346dd3b
 # environment
 LANG = C
 # default
@@ -97,7 +92,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 15764
+VSCODE_PID = 16664
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -174,6 +169,8 @@ USERDOMAIN = DESKTOP-CC2GQSO
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := all
 # default
@@ -181,7 +178,8 @@ MAKE_VERSION := 4.3
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
-USERDOMAIN_ROAMINGPROFILE = DESKTOP-CC2GQSO
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-C 
+C2GQSO
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
@@ -199,14 +197,13 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 VXIPNPPATH = C:\Program Files (x86)\IVI Foundation\VISA\
 # environment
-COMMONPROGRAMFILES(X86) 
- = C:\Program Files (x86)\Common Files
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\Joel\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\b746cc3fc41d8915bea4c05e9b318066-1.73.0-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\b746cc3fc41d8915bea4c05e9b318066-1.73.1-main-sock
 # environment
 GOOGLE_DEFAULT_CLIENT_SECRET = no
 # default
@@ -220,14 +217,13 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
-.FEATURES := target-specific order-only second-expansion else-if sh 
-ortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 5e03
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 # variable set hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=9/136=7%
+# Load=105/1024=10%, Rehash=0, Collisions=8/135=6%
 
 # Pattern-specific Variable Values
 
@@ -235,7 +231,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1668995305): 22 files, no impossibilities.
+# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1668999678): 22 files, no impossibilities.
 
 # 22 files, no impossibilities in 1 directories.
 
@@ -284,8 +280,7 @@ all:
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
 #  recipe to execute (from 'Makefile', line 2):
-	g++ -I src/include -I Images -I Fonts -I src/Classes_and_Functions -I cube -L src/lib -o main main.cpp -l mingw32 -l SDL2main -l SDL2 -l SDL2_ima 
-ge -l SDL2_ttf
+	g++ -I src/include -I Images -I Fonts -I src/Classes_and_Functions -I cube -L src/lib -o main main.cpp -l mingw32 -l SDL2main -l SDL2 -l SDL2_image -l SDL2_ttf
 
 # Not a target:
 .SUFFIXES:
@@ -306,7 +301,8 @@ ge -l SDL2_ttf
 
 # strcache performance: lookups = 32 / hit rate = 21%
 # hash-table stats:
-# Load=25/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Sun Nov 20 18:28:24 2022
+# Load=25/8192=0%, Rehash=0, Collisions=0/32=0 
+%
+# Finished Make data base on Sun Nov 20 21:15:35 2022
 
  

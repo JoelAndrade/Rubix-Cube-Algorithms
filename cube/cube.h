@@ -18,6 +18,8 @@ class cube {
         SDL_Rect rect;
         std::string text;
 
+        
+
         cube() {
         }
         cube(std::string textVal) {
@@ -81,6 +83,7 @@ class cube {
 
     private:
         const int numArrowPoints = 5;
+        int fontSize = 50;
         SDL_Point upArrow[5];
         SDL_Point downArrow[5];
         SDL_Point leftArrow[5];
@@ -102,18 +105,34 @@ class cube {
 
         // Draw arrow on the cube
         void drawArrow(int cubeSize) {
-
             rect = {0, blockLength, blockLength, blockLength};
             rect.makeDimensions();
+
+            auto x2Texture = window.loadText("Fonts/times.ttf", "X2", fontSize);
+            x2Texture.changeColor(&violet);
+
             for (int i = 0; i < text.length(); ++i) {
                 if (i == text.find("U'", i)) {
-                    
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    drawRightArrow(point, cubeSize);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    ++i;
                 }
                 else if (i == text.find("u'", i)) {
                     
                 }
                 else if (i == text.find("U2", i)) {
-                    
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    drawLeftArrow(point, cubeSize);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    x2Texture.createTexture(window.renderer);
+                    x2Texture.render(window.renderer);
                 }
                 else if (i == text.find("U", i)) {
                     point.x = rect.x;
@@ -128,6 +147,13 @@ class cube {
                 }
 
                 else if (i == text.find("D'", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + blockLength - (blockLength/cubeSize)/2;
+                    drawLeftArrow(point, cubeSize);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    ++i;
                 }
                 else if (i == text.find("d'", i)) {
                 }
@@ -145,6 +171,13 @@ class cube {
                 }
 
                 else if (i == text.find("L'", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    drawUpArrow(point, cubeSize);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    ++i;
                 }
                 else if (i == text.find("l'", i)) {
                 }
@@ -162,6 +195,13 @@ class cube {
                 }
 
                 else if (i == text.find("R'", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = point.y + blockLength - (blockLength/cubeSize)/2;
+                    drawDownArrow(point, cubeSize);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    ++i;
                 }
                 else if (i == text.find("r'", i)) {
                 }

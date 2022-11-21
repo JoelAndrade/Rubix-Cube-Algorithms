@@ -24,11 +24,19 @@ SDL_Color red = {255, 0, 0};
 SDL_Color cyan = {0, 150, 225};
 SDL_Color blue = {0, 0, 255};
 SDL_Color black = {0, 0, 0};
+SDL_Color white = {255, 255, 255};
 
 win window("Loading Algorithm", windowWidth, windowHeight);
 
 enum menu {
-    QUIT, MAINMENU, X2, X3, X4, X5, X6, X7
+    QUIT, 
+    MAINMENU, 
+    X2, 
+    X3, 
+    X4, 
+    X5, 
+    X6, 
+    X7
 };
 
 int mainMenu();

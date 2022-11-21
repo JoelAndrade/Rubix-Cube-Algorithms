@@ -1,6 +1,6 @@
 #include "main.h"
 
-std::string loadText = "R ";//U2 R2 F R F' U2 R' F R F'";
+std::string loadText = "R R' U U' L L' D D'";//U2 R2 F R F' U2 R' F R F'";
 
 int mode = X3;
 
@@ -54,22 +54,6 @@ int algorithmImages() {
                 return QUIT;
             }
             if (event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_RIGHT) {
-                    ++x;
-                    rect = {blockLength*x, blockLength*(y+1), blockLength, blockLength};
-                }
-                if (event.key.keysym.sym == SDLK_DOWN) {
-                    ++y;
-                    rect = {blockLength*x, blockLength*(y+1), blockLength, blockLength};
-                }
-                if (event.key.keysym.sym == SDLK_LEFT) {
-                    --x;
-                    rect = {blockLength*x, blockLength*(y+1), blockLength, blockLength};
-                }
-                if (event.key.keysym.sym == SDLK_UP) {
-                    --y;
-                    rect = {blockLength*x, blockLength*(y+1), blockLength, blockLength};
-                }
                 if (event.key.keysym.sym == SDLK_BACKSPACE) {
                     if (text.text.length() > 0) {
                         text.text.pop_back();
@@ -78,9 +62,11 @@ int algorithmImages() {
                         text.rect.shiftXY();     
                     }
                 }
+
                 else if (event.key.keysym.sym == SDLK_c && SDL_GetModState() & KMOD_CTRL) {
                     SDL_SetClipboardText(text.text.c_str());
                 }
+
                 else if (event.key.keysym.sym == SDLK_v && SDL_GetModState() & KMOD_CTRL) {
                     text.text = SDL_GetClipboardText();
                     text.createTexture(window.renderer);
@@ -88,6 +74,7 @@ int algorithmImages() {
                     text.rect.shiftXY();
                 }
             }
+            
             else if (event.type == SDL_TEXTINPUT) {
                 if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V'))) {
                     text.text += event.text.text;
