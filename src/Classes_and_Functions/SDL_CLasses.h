@@ -99,7 +99,7 @@ class win {
                 SDL_RenderDrawLine(renderer, x1, y1 + i, x2, y2 + i);
             }            
         }
-        void drawLines(SDL_Point points[], SDL_Color* color, int numPoints, int xScale = 1, int yScale = 1) {
+        void drawLines(SDL_Point* points, SDL_Color* color, int numPoints, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
                 std::cout << "Your Color Was NULL" << std::endl;
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);

@@ -4,14 +4,6 @@ std::string loadText = "R ";//U2 R2 F R F' U2 R' F R F'";
 
 int mode = X3;
 
-const int numPoints = 6;
-SDL_Point points[numPoints] = {
-    {100, 50}, {300, 50},
-    {300, 150}, {100, 150},
-    {300, 250}, {100, 250}
-};
-
-
 Uint32 startingTick;
 SDL_Event event;
 
@@ -34,7 +26,6 @@ int main(int argc, char* args[]) {
     text.color = {255, 255, 255, 255};
     text.createTexture(window.renderer);
     text.rect.shiftXY();
-    std::cout << mode << std::endl;
 
     rect.makeDimensions();
 
@@ -115,11 +106,10 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        window.drawLines(points, &violet, numPoints);
-        // TODO: make arrows for the algorithms
+        // TODO: make arrow for all possible moves
 
-        window.drawRect(&violet, 3, 3);
-        window.drawRect(&violet, topRect, 3, 3);
+        window.drawRect(&cyan, 3, 3);
+        window.drawRect(&cyan, topRect, 3, 3);
         text.render(window.renderer);
         SDL_RenderPresent(window.renderer);
     }

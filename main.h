@@ -20,6 +20,8 @@ int fps = 15;
 
 SDL_Color violet = {255, 0, 255};
 SDL_Color green = {0, 255, 0};
+SDL_Color red = {255, 0, 0};
+SDL_Color cyan = {0, 150, 225};
 SDL_Color blue = {0, 0, 255};
 SDL_Color black = {0, 0, 0};
 

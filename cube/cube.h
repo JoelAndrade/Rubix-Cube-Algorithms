@@ -70,12 +70,34 @@ class cube {
                     window.drawLine(rect.x + (blockLength*i)/cubeSize, rect.y, rect.x + (blockLength*i)/cubeSize, rect.bottomY, &black, 3, 1);
                     window.drawLine(rect.x, rect.y + (blockLength*i)/cubeSize, rect.rightX, rect.y + (blockLength*i)/cubeSize, &black, 1, 3);
                 }
-                window.drawRect(&violet, rect, 3, 3);
+                window.drawRect(&blue, rect, 3, 3);
 
                 nextRect();
             }
 
             drawArrow(cubeSize);
+        }
+
+
+    private:
+        const int numArrowPoints = 5;
+        SDL_Point upArrow[5];
+        SDL_Point downArrow[5];
+        SDL_Point leftArrow[5];
+        SDL_Point rightArrow[5];
+        SDL_Point point;
+
+        // Set up the next rect to be drawn
+        void nextRect() {
+            if (rect.rightX != windowWidth) {
+                rect.x = rect.x + blockLength;
+                rect.makeDimensions();  
+            }
+            else {
+                rect.x = 0;
+                rect.y = rect.y + blockLength;
+                rect.makeDimensions();
+            }        
         }
 
         // Draw arrow on the cube
@@ -94,7 +116,12 @@ class cube {
                     
                 }
                 else if (i == text.find("U", i)) {
-                    window.drawLine(rect.x, rect.y + blockLength/(cubeSize*2), rect.rightX, rect.y + blockLength/(cubeSize*2), &black, 1, 3);
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    drawLeftArrow(point, cubeSize);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("u", i)) {
 
@@ -106,7 +133,13 @@ class cube {
                 }
                 else if (i == text.find("D2", i)) {
                 }
-                else if (i == text.find("D", i)) {
+                else if (i == text.find("D", i)) { 
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = point.y + blockLength - (blockLength/cubeSize)/2;
+                    drawRightArrow(point, cubeSize);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("d", i)) {
                 }
@@ -118,7 +151,12 @@ class cube {
                 else if (i == text.find("L2", i)) {
                 }
                 else if (i == text.find("L", i)) {
-                    window.drawLine(rect.x + blockLength/(cubeSize*2), rect.y, rect.x + blockLength/(cubeSize*2), rect.bottomY, &black, 3, 1);
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + blockLength - (blockLength/cubeSize)/2;
+                    drawDownArrow(point, cubeSize);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("l", i)) {
                 }
@@ -130,6 +168,12 @@ class cube {
                 else if (i == text.find("R2", i)) {
                 }
                 else if (i == text.find("R", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    drawUpArrow(point, cubeSize);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("r", i)) {
                 }
@@ -181,21 +225,74 @@ class cube {
             }
         }
 
-        // Set up the next rect to be drawn
-        void nextRect() {
-            if (rect.rightX != windowWidth) {
-                rect.x = rect.x + blockLength;
-                rect.makeDimensions();  
-            }
-            else {
-                rect.x = 0;
-                rect.y = rect.y + blockLength;
-                rect.makeDimensions();
-            }        
+        void drawUpArrow(SDL_Point upArrowPoint, int cubeSize) {
+            upArrow[0].x = upArrowPoint.x;
+            upArrow[0].y = upArrowPoint.y + blockLength - blockLength/(cubeSize);
+
+            upArrow[1].x = upArrowPoint.x;
+            upArrow[1].y = upArrowPoint.y;
+
+            upArrow[2].x = upArrowPoint.x - 10;
+            upArrow[2].y = upArrowPoint.y + 10;
+
+            upArrow[3].x = upArrowPoint.x;
+            upArrow[3].y = upArrowPoint.y;
+
+            upArrow[4].x = upArrowPoint.x + 10;
+            upArrow[4].y = upArrowPoint.y + 10;
         }
 
-    private:
-    
+        void drawDownArrow(SDL_Point downArrowPoint, int cubeSize) {
+            downArrow[0].x = downArrowPoint.x;
+            downArrow[0].y = downArrowPoint.y - blockLength + blockLength/(cubeSize);
+
+            downArrow[1].x = downArrowPoint.x;
+            downArrow[1].y = downArrowPoint.y;
+
+            downArrow[2].x = downArrowPoint.x - 10;
+            downArrow[2].y = downArrowPoint.y - 10;
+
+            downArrow[3].x = downArrowPoint.x;
+            downArrow[3].y = downArrowPoint.y;
+
+            downArrow[4].x = downArrowPoint.x + 10;
+            downArrow[4].y = downArrowPoint.y - 10;
+        }
+
+        void drawLeftArrow(SDL_Point leftArrowPoint, int cubeSize) {
+            leftArrow[0].x = leftArrowPoint.x + blockLength - blockLength/cubeSize;
+            leftArrow[0].y = leftArrowPoint.y;
+
+            leftArrow[1].x = leftArrowPoint.x;
+            leftArrow[1].y = leftArrowPoint.y;
+
+            leftArrow[2].x = leftArrowPoint.x + 10;
+            leftArrow[2].y = leftArrowPoint.y - 10;
+
+            leftArrow[3].x = leftArrowPoint.x;
+            leftArrow[3].y = leftArrowPoint.y;
+
+            leftArrow[4].x = leftArrowPoint.x + 10;
+            leftArrow[4].y = leftArrowPoint.y + 10;
+        }
+
+        void drawRightArrow(SDL_Point rightArrowPoint, int cubeSize) {
+            rightArrow[0].x = rightArrowPoint.x - blockLength + blockLength/cubeSize;
+            rightArrow[0].y = rightArrowPoint.y;
+
+            rightArrow[1].x = rightArrowPoint.x;
+            rightArrow[1].y = rightArrowPoint.y;
+
+            rightArrow[2].x = rightArrowPoint.x - 10;
+            rightArrow[2].y = rightArrowPoint.y - 10;
+
+            rightArrow[3].x = rightArrowPoint.x;
+            rightArrow[3].y = rightArrowPoint.y;
+
+            rightArrow[4].x = rightArrowPoint.x - 10;
+            rightArrow[4].y = rightArrowPoint.y + 10;
+        }
+
 };
 
 #endif
