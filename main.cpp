@@ -74,7 +74,7 @@ int algorithmImages() {
                     text.rect.shiftXY();
                 }
             }
-            
+
             else if (event.type == SDL_TEXTINPUT) {
                 if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V'))) {
                     text.text += event.text.text;
@@ -93,7 +93,12 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: make arrow for all possible moves
+        // TODO: Make the circle arrow
+        // TODO: adjust the X2 and B positions
+        // TODO: add spacing within the cube
+        
+        // TODO: Support 2x2
+        // TODO: Support 4x4
 
         window.drawRect(&cyan, 3, 3);
         window.drawRect(&cyan, topRect, 3, 3);
