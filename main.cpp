@@ -1,6 +1,6 @@
 #include "main.h"
 
-std::string loadText = "R R' U U' L L' D D'";//U2 R2 F R F' U2 R' F R F'";
+std::string loadText = "R R' U U' L L' D D'"; //U2 R2 F R F' U2 R' F R F'";
 
 int mode = X3;
 
@@ -11,10 +11,9 @@ auto text = window.loadText();
 
 cube myCube(loadText); 
 
-int x = 0;
-int y = 0;
-SDL_Rect rect = {blockLength*(x + 2), blockLength*(y + 2), blockLength, blockLength};
 SDL_Rect topRect = {0, 0, window.w, blockLength};
+
+SDL_Point testPoint = {500, 500};
 
 int main(int argc, char* args[]) {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -23,17 +22,15 @@ int main(int argc, char* args[]) {
     TTF_Init();
 
     text.setup(window.renderer, "Fonts/times.ttf", myCube.text.c_str(), 50, window.w/2, blockLength/2);
-    text.color = {255, 255, 255, 255};
+    text.color = white;
     text.createTexture(window.renderer);
     text.rect.shiftXY();
-
-    rect.makeDimensions();
 
     while (mode) {
         if (mode == MAINMENU) {
             mode = mainMenu();
         }
-        if (mode != MAINMENU && mode != QUIT) {
+        if (mode != MAINMENU && mode != QUIT) { // this us temporary
             mode = algorithmImages();
         }
     }
@@ -99,6 +96,8 @@ int algorithmImages() {
         
         // TODO: Support 2x2
         // TODO: Support 4x4
+
+        window.drawCircle(testPoint, &violet, 100);
 
         window.drawRect(&cyan, 3, 3);
         window.drawRect(&cyan, topRect, 3, 3);

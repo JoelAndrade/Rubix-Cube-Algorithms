@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri Nov 25 19:09:45 2022
+# Make data base, printed on Sun Dec 04 10:15:51 2022
 
 # Variables
 
@@ -43,7 +44,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13224_RNEEXLPMWRYUBURP
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_5152_IMJGTOZSMSFHLWQH
 # environment
 ONEDRIVECOMMERCIAL = D:\Joel\OneDrive - csulb
 # environment
@@ -95,7 +96,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 13224
+VSCODE_PID = 5152
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -105,8 +106,7 @@ GOOGLE_DEFAULT_CLIENT_ID = no
 # automatic
 *F = $(notdir $*)
 # environment
-RABBITMQ_CONFIG_FILE = "C:\Prog 
-ramData\National Instruments\Skyline\RabbitMQ\rabbitmq"
+RABBITMQ_CONFIG_FILE = "C:\ProgramData\National Instruments\Skyline\RabbitMQ\rabbitmq"
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
@@ -232,7 +232,8 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1669347795): 22 files, no impossibilities.
+# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1669498989): 22 files, no impossibilities 
+.
 
 # 22 files, no impossibilities in 1 directories.
 
@@ -303,6 +304,6 @@ all:
 # strcache performance: lookups = 32 / hit rate = 21%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Fri Nov 25 19:09:45 2022
+# Finished Make data base on Sun Dec 04 10:15:51 2022
 
  
