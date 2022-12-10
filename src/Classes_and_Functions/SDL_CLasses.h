@@ -71,7 +71,6 @@ class win {
         }
         void drawLine(int x1, int y1, int x2, int y2, SDL_Color* color, int xScale = 1, int yScale = 1) { // TODO: Might want to change the parameters to take to point types
             if (color == NULL) {
-                std::cout << "Your Color Was NULL" << std::endl;
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
             else {
@@ -101,7 +100,6 @@ class win {
         }
         void drawLines(SDL_Point* points, SDL_Color* color, int numPoints, int xScale = 1, int yScale = 1) {
             if (color == NULL) {
-                std::cout << "Your Color Was NULL" << std::endl;
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
             else {
@@ -226,23 +224,21 @@ class win {
             else {
                 SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, color->a);
             }
-            SDL_RenderSetScale(renderer, scale, scale);
-        
-            center.x /= scale;
-            center.y /= scale;
-            radius /= scale;
-
-            double y;
-            
-            for (double x = -radius; x <= radius; x += 0.5) {
-                std::cout << x << "     ";
-                y = round(sqrt(pow(radius, 2) - pow(x, 2)));
-                std::cout << y << std::endl;                
-
-                SDL_RenderDrawPoint(renderer, center.x + x, center.y + y);
-                SDL_RenderDrawPoint(renderer, center.x - x, center.y - y);
+            if (scale < 1) {
+                scale = 1;
             }
-            SDL_RenderSetScale(renderer, 1, 1);
+
+            int y;
+            SDL_Point previousPoint = {-radius, 0};
+            for (int x = -radius + 1; x <= radius; ++x) {
+                y = round(sqrt(pow(radius, 2) - pow(x, 2)));
+
+                drawLine(center.x + previousPoint.x, center.y - previousPoint.y, center.x + x, center.y - y, color, scale, scale);
+                drawLine(center.x + previousPoint.x, center.y + previousPoint.y, center.x + x, center.y + y, color, scale, scale);
+
+                previousPoint.x = x;
+                previousPoint.y = y;
+            }
         }
 
     private:

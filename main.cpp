@@ -97,7 +97,7 @@ int algorithmImages() {
         // TODO: Support 2x2
         // TODO: Support 4x4
 
-        window.drawCircle(testPoint, &violet, 100);
+        window.drawCircle(testPoint, &violet, 100, 1);
 
         window.drawRect(&cyan, 3, 3);
         window.drawRect(&cyan, topRect, 3, 3);
