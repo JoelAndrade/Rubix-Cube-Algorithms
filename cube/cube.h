@@ -117,6 +117,7 @@ class cube {
         SDL_Point downArrow[5];
         SDL_Point leftArrow[5];
         SDL_Point rightArrow[5];
+        int radius;
         SDL_Point point;
 
         // Set up the next rect to be drawn
@@ -374,12 +375,30 @@ class cube {
                 }
                 
                 else if (i == text.find("F'", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, -1);
+                    window.drawCircle(point, &violet, radius, 3);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("f'", i)) {
                 }
                 else if (i == text.find("F2", i)) {
                 }
                 else if (i == text.find("F", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, 1);
+                    window.drawCircle(point, &violet, radius, 3);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("f", i)) {
                 }
@@ -567,6 +586,76 @@ class cube {
 
             rightArrow[4].x = rightArrowPoint.x - 10;
             rightArrow[4].y = rightArrowPoint.y + 10;
+        }
+
+        void makeCircleArrows(SDL_Point center, int cubeSize, int clockwise = 1) {
+            radius = blockLength/2 - (blockLength/cubeSize)/2;
+
+            rightArrow[0].x = center.x;
+            rightArrow[0].y = center.y - blockLength/2 + (blockLength/cubeSize)/2;
+
+            rightArrow[1].x = rightArrow[0].x - clockwise*10;
+            rightArrow[1].y = rightArrow[0].y - 10;
+
+            rightArrow[2].x = center.x;
+            rightArrow[2].y = center.y - blockLength/2 + (blockLength/cubeSize)/2;
+
+            rightArrow[3].x = rightArrow[0].x - clockwise*10;
+            rightArrow[3].y = rightArrow[0].y + 10;
+
+            rightArrow[4].x = center.x;
+            rightArrow[4].y = center.y - blockLength/2 + (blockLength/cubeSize)/2;
+
+
+
+            downArrow[0].x = center.x + blockLength/2 - (blockLength/cubeSize)/2;
+            downArrow[0].y = center.y;
+
+            downArrow[1].x = downArrow[0].x - 10;
+            downArrow[1].y = downArrow[0].y - clockwise*10;
+
+            downArrow[2].x = center.x + blockLength/2 - (blockLength/cubeSize)/2;
+            downArrow[2].y = center.y;
+
+            downArrow[3].x = downArrow[0].x + 10;
+            downArrow[3].y = downArrow[0].y - clockwise*10;
+
+            downArrow[4].x = center.x + blockLength/2 - (blockLength/cubeSize)/2;
+            downArrow[4].y = center.y;
+
+
+
+            leftArrow[0].x = center.x;
+            leftArrow[0].y = center.y + blockLength/2 - (blockLength/cubeSize)/2;
+
+            leftArrow[1].x = leftArrow[0].x + clockwise*10;
+            leftArrow[1].y = leftArrow[0].y + 10;
+
+            leftArrow[2].x = center.x;
+            leftArrow[2].y = center.y + blockLength/2 - (blockLength/cubeSize)/2;
+
+            leftArrow[3].x = leftArrow[0].x + clockwise*10;
+            leftArrow[3].y = leftArrow[0].y - 10;
+
+            leftArrow[4].x = center.x;
+            leftArrow[4].y = center.y + blockLength/2 - (blockLength/cubeSize)/2;
+
+
+
+            upArrow[0].x = center.x - blockLength/2 + (blockLength/cubeSize)/2;
+            upArrow[0].y = center.y;
+
+            upArrow[1].x = upArrow[0].x - 10;
+            upArrow[1].y = upArrow[0].y + clockwise*10;
+
+            upArrow[2].x = center.x - blockLength/2 + (blockLength/cubeSize)/2;
+            upArrow[2].y = center.y;
+
+            upArrow[3].x = upArrow[0].x + 10;
+            upArrow[3].y = upArrow[0].y + clockwise*10;
+
+            upArrow[4].x = center.x - blockLength/2 + (blockLength/cubeSize)/2;
+            upArrow[4].y = center.y;
         }
 
 };

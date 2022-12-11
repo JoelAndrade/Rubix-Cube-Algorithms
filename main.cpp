@@ -2,7 +2,7 @@
 
 std::string loadText = "R R' U U' L L' D D'"; //U2 R2 F R F' U2 R' F R F'";
 
-int mode = X3;
+int mode = X4;
 
 Uint32 startingTick;
 SDL_Event event;
@@ -97,7 +97,7 @@ int algorithmImages() {
         // TODO: Support 2x2
         // TODO: Support 4x4
 
-        window.drawCircle(testPoint, &violet, 100, 1);
+        window.drawCircle(testPoint, &violet, blockLength/2 - blockLength/mode/2, 3, 0.5);
 
         window.drawRect(&cyan, 3, 3);
         window.drawRect(&cyan, topRect, 3, 3);

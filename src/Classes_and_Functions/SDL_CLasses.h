@@ -217,7 +217,7 @@ class win {
             SDL_RenderFillRect(renderer, NULL);
             SDL_RenderSetScale(renderer, 1, 1);
         }
-        void drawCircle(SDL_Point center, SDL_Color* color, int radius, int scale = 1) {
+        void drawCircle(SDL_Point center, SDL_Color* color, int radius, int scale = 1, double increments = 1.0) {
             if (color == NULL) {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
@@ -228,13 +228,17 @@ class win {
                 scale = 1;
             }
 
-            int y;
+            double y;
             SDL_Point previousPoint = {-radius, 0};
-            for (int x = -radius + 1; x <= radius; ++x) {
-                y = round(sqrt(pow(radius, 2) - pow(x, 2)));
+            for (double x = -radius + increments; x <= 0; x += increments) {
+                y = roundl(sqrt(pow(radius, 2) - pow(x, 2)));
+
+
 
                 drawLine(center.x + previousPoint.x, center.y - previousPoint.y, center.x + x, center.y - y, color, scale, scale);
+                drawLine(center.x - previousPoint.x, center.y - previousPoint.y, center.x - x, center.y - y, color, scale, scale);
                 drawLine(center.x + previousPoint.x, center.y + previousPoint.y, center.x + x, center.y + y, color, scale, scale);
+                drawLine(center.x - previousPoint.x, center.y + previousPoint.y, center.x - x, center.y + y, color, scale, scale);
 
                 previousPoint.x = x;
                 previousPoint.y = y;
