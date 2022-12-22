@@ -1,8 +1,11 @@
 #include "main.h"
+#include "cube/cube.h"
+
+#include <SDL_Util.h>
 
 std::string loadText = "R R' U U' L L' D D'"; //U2 R2 F R F' U2 R' F R F'";
 
-int mode = X4;
+int mode = X3;
 
 Uint32 startingTick;
 SDL_Event event;
@@ -13,7 +16,7 @@ cube myCube(loadText);
 
 SDL_Rect topRect = {0, 0, window.w, blockLength};
 
-SDL_Point testPoint = {500, 500};
+SDL_Rect testPoint = {500, 500, blockLength, blockLength}; // temp
 
 int main(int argc, char* args[]) {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -30,7 +33,7 @@ int main(int argc, char* args[]) {
         if (mode == MAINMENU) {
             mode = mainMenu();
         }
-        if (mode != MAINMENU && mode != QUIT) { // this us temporary
+        if (mode != MAINMENU && mode != QUIT) { // this is temporary
             mode = algorithmImages();
         }
     }
@@ -90,14 +93,14 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: Make the circle arrow
         // TODO: adjust the X2 and B positions
         // TODO: add spacing within the cube
         
         // TODO: Support 2x2
         // TODO: Support 4x4
+        // TODO: Support 5x5
 
-        window.drawCircle(testPoint, &violet, blockLength/2 - blockLength/mode/2, 3, 0.5);
+        // TODO: Make a menu to choose the cube you want
 
         window.drawRect(&cyan, 3, 3);
         window.drawRect(&cyan, topRect, 3, 3);

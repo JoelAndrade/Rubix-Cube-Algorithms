@@ -1,27 +1,24 @@
 #ifndef CUBE_H
 #define CUBE_H
 
-#include "NxN.h"
+// #include "NxN.h"
+
 #include "../main.h"
 #include <iostream>
 #include <string>
+#include <SDL2/SDL.h>
+#include <SDL_CLasses.h>
+#include <SDL_Util.h>
+
+#define CLOCKWISE (1)
+#define COUNTER_CLOCKWISE (-1)
 
 class cube {
     public:
-        xx2 Xx2;
-        x3 Xx3;
-        x4 Xx4;
-        x5 Xx5;
-        x6 Xx6;
-        x7 Xx7;
-
         SDL_Rect rect;
         std::string text;
 
-        
-
-        cube() {
-        }
+        cube() {}
         cube(std::string textVal) {
             text = textVal;
         }
@@ -110,7 +107,7 @@ class cube {
         }
 
 
-    private:
+    private:        
         const int numArrowPoints = 5;
         int fontSize = 50;
         SDL_Point upArrow[5];
@@ -122,7 +119,7 @@ class cube {
 
         // Set up the next rect to be drawn
         void nextRect() {
-            if (rect.rightX != windowWidth) {
+            if (rect.rightX != window.w) {
                 rect.x = rect.x + blockLength;
                 rect.makeDimensions();  
             }
@@ -139,7 +136,10 @@ class cube {
             rect.makeDimensions();
 
             auto x2Texture = window.loadText("Fonts/times.ttf", "X2", fontSize);
-            x2Texture.changeColor(&violet);
+            x2Texture.changeColor(&blue);
+
+            auto backTexture = window.loadText("Fonts/times.ttf", "B", fontSize);
+            backTexture.changeColor(&blue);
 
             for (int i = 0; i < text.length(); ++i) {
                 if (i == text.find("U'", i)) {
@@ -378,22 +378,51 @@ class cube {
                     point.x = rect.x + blockLength/2;
                     point.y = rect.y + blockLength/2;
 
-                    makeCircleArrows(point, cubeSize, -1);
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
                     window.drawCircle(point, &violet, radius, 3);
                     window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
                     window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
                     window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
                     window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    ++i;
                 }
                 else if (i == text.find("f'", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 4);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 4, 4);
+
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
+                    window.drawCircle(point, &cyan, radius, 2);
+                    window.drawLines(upArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(rightArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(downArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(leftArrow, &cyan, numArrowPoints, 2, 2);
                 }
                 else if (i == text.find("F2", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 3);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    x2Texture.createTexture(window.renderer);
+                    x2Texture.render(window.renderer);
+                    ++i;
                 }
                 else if (i == text.find("F", i)) {
                     point.x = rect.x + blockLength/2;
                     point.y = rect.y + blockLength/2;
 
-                    makeCircleArrows(point, cubeSize, 1);
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
                     window.drawCircle(point, &violet, radius, 3);
                     window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
                     window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
@@ -401,17 +430,108 @@ class cube {
                     window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
                 }
                 else if (i == text.find("f", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 4);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 4, 4);
+
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
+                    window.drawCircle(point, &cyan, radius, 2);
+                    window.drawLines(upArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(rightArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(downArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(leftArrow, &cyan, numArrowPoints, 2, 2);
                 }
                 
                 else if (i == text.find("B'", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 3);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    backTexture.createTexture(window.renderer);
+                    backTexture.render(window.renderer);
+                    ++i;
                 }
                 else if (i == text.find("b'", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 4);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 4, 4);
+
+                    makeCircleArrows(point, cubeSize, CLOCKWISE);
+                    window.drawCircle(point, &cyan, radius, 2);
+                    window.drawLines(upArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(rightArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(downArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(leftArrow, &cyan, numArrowPoints, 2, 2);
+
+                    backTexture.createTexture(window.renderer);
+                    backTexture.render(window.renderer);
+
                 }
                 else if (i == text.find("B2", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 3);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    x2Texture.createTexture(window.renderer);
+                    x2Texture.render(window.renderer);
+                    backTexture.createTexture(window.renderer);
+                    backTexture.render(window.renderer);
+                    ++i;
                 }
                 else if (i == text.find("B", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 3);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                    backTexture.createTexture(window.renderer);
+                    backTexture.render(window.renderer);
                 }
                 else if (i == text.find("b", i)) {
+                    point.x = rect.x + blockLength/2;
+                    point.y = rect.y + blockLength/2;
+
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
+                    window.drawCircle(point, &violet, radius, 4);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(rightArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 4, 4);
+                    window.drawLines(leftArrow, &violet, numArrowPoints, 4, 4);
+
+                    makeCircleArrows(point, cubeSize, COUNTER_CLOCKWISE);
+                    window.drawCircle(point, &cyan, radius, 2);
+                    window.drawLines(upArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(rightArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(downArrow, &cyan, numArrowPoints, 2, 2);
+                    window.drawLines(leftArrow, &cyan, numArrowPoints, 2, 2);
+                    backTexture.createTexture(window.renderer);
+                    backTexture.render(window.renderer);
                 }
                 
                 else if (i == text.find("x'", i)) {
@@ -510,10 +630,51 @@ class cube {
                 }
                 
                 else if (i == text.find("z'", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    makeDownArrow(point, cubeSize);
+                    window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    
+                    for (int i = 0; i < cubeSize - 1; ++i) {
+                        point.y = point.y + blockLength/cubeSize;
+                        makeDownArrow(point, cubeSize);
+                        window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                    }
+
+                    ++i;
                 }
                 else if (i == text.find("z2", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    makeUpArrow(point, cubeSize);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+
+                    for (int i = 0; i < cubeSize - 1; ++i) {
+                        point.y = point.y + blockLength/cubeSize;
+                        makeUpArrow(point, cubeSize);
+                        window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    }
+                    x2Texture.createTexture(window.renderer);
+                    x2Texture.render(window.renderer);
+                    ++i;
                 }
                 else if (i == text.find("z", i)) {
+                    point.x = rect.x;
+                    point.y = rect.y;
+                    point.x = point.x + (blockLength/cubeSize)/2;
+                    point.y = point.y + (blockLength/cubeSize)/2;
+                    makeUpArrow(point, cubeSize);
+                    window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+
+                    for (int i = 0; i < cubeSize - 1; ++i) {
+                        point.y = point.y + blockLength/cubeSize;
+                        makeUpArrow(point, cubeSize);
+                        window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                    }
                 }
                 
                 nextRect();
@@ -660,4 +821,4 @@ class cube {
 
 };
 
-#endif
+#endif // CUBE_H

@@ -1,9 +1,10 @@
-#include <iostream>
-#include <SDL_CLasses.h>
-#include "../main.h"
-
 #ifndef NXN_H
 #define NXN_H
+
+#include "../main.h"
+
+#include <iostream>
+#include <SDL_CLasses.h>
 
 class xx2 {
     public:
@@ -237,4 +238,4 @@ class x7 {
                 
             }
 };
-#endif
+#endif // NXN_H

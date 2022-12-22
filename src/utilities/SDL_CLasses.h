@@ -1,3 +1,6 @@
+#ifndef SDL_CLASSES_H
+#define SDL_CLASSES_H
+
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -6,8 +9,8 @@
 #include <SDL2/SDL_ttf.h>
 #include <fstream>
 
-#ifndef SDL_CLASSES_H
-#define SDL_CLASSES_H
+#define PI (3.1415)      
+#define DEG_TO_RAD(deg) (deg * (2.0*PI/360))
 
 #define renderColor 0, 0, 0, 0xFF // black background
 //#define renderColor 255, 255, 255, 0xFF // white background
@@ -92,10 +95,9 @@ class win {
             y2 = y2 - yScale;
 
             for (int i = 0; x1 - xScale + i < x1 + xScale + 1; ++i) {
-                SDL_RenderDrawLine(renderer, x1 + i, y1, x2 + i, y2);
-            }
-            for (int i = 0; y1 - yScale + i < y1 + yScale + 1; ++i) {
-                SDL_RenderDrawLine(renderer, x1, y1 + i, x2, y2 + i);
+                for (int j = 0; y1 - yScale + j < y1 + yScale + 1; ++j) {
+                    SDL_RenderDrawLine(renderer, x1 + i, y1 + j, x2 + i, y2 + j);
+                }
             }            
         }
         void drawLines(SDL_Point* points, SDL_Color* color, int numPoints, int xScale = 1, int yScale = 1) {
@@ -217,7 +219,8 @@ class win {
             SDL_RenderFillRect(renderer, NULL);
             SDL_RenderSetScale(renderer, 1, 1);
         }
-        void drawCircle(SDL_Point center, SDL_Color* color, int radius, int scale = 1, double increments = 1.0) {
+        void drawCircle(SDL_Point center, SDL_Color* color, int radius, int scale = 1, double increments = 1) {
+
             if (color == NULL) {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             }
@@ -228,21 +231,20 @@ class win {
                 scale = 1;
             }
 
-            double y;
-            SDL_Point previousPoint = {-radius, 0};
-            for (double x = -radius + increments; x <= 0; x += increments) {
-                y = roundl(sqrt(pow(radius, 2) - pow(x, 2)));
+            int x;
+            int y;
 
-
+            SDL_Point previousPoint = {radius, 0};
+            for (double theta = 0; theta < 360; theta = theta + increments) {
+                x = round(radius*cos(DEG_TO_RAD(theta)));
+                y = round(radius*sin(DEG_TO_RAD(theta)));
 
                 drawLine(center.x + previousPoint.x, center.y - previousPoint.y, center.x + x, center.y - y, color, scale, scale);
-                drawLine(center.x - previousPoint.x, center.y - previousPoint.y, center.x - x, center.y - y, color, scale, scale);
-                drawLine(center.x + previousPoint.x, center.y + previousPoint.y, center.x + x, center.y + y, color, scale, scale);
-                drawLine(center.x - previousPoint.x, center.y + previousPoint.y, center.x - x, center.y + y, color, scale, scale);
 
                 previousPoint.x = x;
                 previousPoint.y = y;
             }
+            
         }
 
     private:
@@ -850,4 +852,4 @@ class file {
         }
 };
 
-#endif
+#endif // SDL_CLASSES_H
