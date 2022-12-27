@@ -2,6 +2,7 @@
 #define SDL_UTIL_H
 
 #include <SDL2/SDL.h>
+#include <SDL_Classes.h>
 
 SDL_Color violet = {255, 0, 255};
 SDL_Color green = {0, 255, 0};

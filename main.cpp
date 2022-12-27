@@ -93,6 +93,7 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
+        // TODO: Fix the x notation
         // TODO: adjust the X2 and B positions
         // TODO: add spacing within the cube
         
