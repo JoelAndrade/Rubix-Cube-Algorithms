@@ -457,7 +457,7 @@ class win {
             }
 
             void changeColor(SDL_Color* colorVal) {
-                color.r = colorVal->a;
+                color.r = colorVal->r;
                 color.g = colorVal->g;
                 color.b = colorVal->b;
                 color.a = colorVal->a;

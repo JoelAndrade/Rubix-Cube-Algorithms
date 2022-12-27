@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Dec 27 11:06:33 2022
+# Make data base, printed on Tue Dec 27 12:26:43 2022
 
 # Variables
 
@@ -27,7 +27,8 @@ VBOX_MSI_INSTALL_PATH = D:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\Joel\AppData\Local
 # environment
-VSCODE_CWD = C:\Users\Joel\AppData\Local\Programs\Microsoft VS Code
+VSCODE_CWD = C:\Users\Joel\App 
+Data\Local\Programs\Microsoft VS Code
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -43,7 +44,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_11184_VKLTOIOFMMOKCDQM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_13792_UNQXFPNBKCURTZLK
 # environment
 ONEDRIVECOMMERCIAL = D:\Joel\OneDrive - csulb
 # environment
@@ -59,8 +60,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\e8a3071ea4344d9d48ef8a4df2c09 
-7372b0c5161
+VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\e8a3071ea4344d9d48ef8a4df2c097372b0c5161
 # environment
 LANG = C
 # default
@@ -96,7 +96,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11184
+VSCODE_PID = 13792
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -232,7 +232,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1671741637): 22 files, no impossibilities.
+# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1672172789): 22 files, no impossibilities.
 
 # 22 files, no impossibilities in 1 directories.
 
@@ -245,7 +245,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-12-22 12:35:59
+#  Last modified 2022-12-27 12:26:26
 #  File has been updated.
 #  Successfully updated.
 
@@ -301,9 +301,8 @@ all:
 # current buf: size = 8174 B / used = 220 B / count = 25 / avg = 8 B
 
 # strcache performance: lookups = 32 / hit rate = 21%
-# hash-ta 
-ble stats:
+# hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Tue Dec 27 11:06:33 2022
+# Finished Make data base on Tue Dec 27 12:26:43 2022
 
  

@@ -93,8 +93,6 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: Fix the x notation
-        // TODO: adjust the X2 and B positions
         // TODO: add spacing within the cube
         
         // TODO: Support 2x2
@@ -102,6 +100,7 @@ int algorithmImages() {
         // TODO: Support 5x5
 
         // TODO: Make a menu to choose the cube you want
+        // TODO: Maybe make a specific algorithm page
 
         window.drawRect(&cyan, 3, 3);
         window.drawRect(&cyan, topRect, 3, 3);
