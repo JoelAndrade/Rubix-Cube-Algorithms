@@ -75,7 +75,7 @@ class cube {
 
         // Fills the square and and adds the lines
         void drawCube(int cubeSize) {
-            rect = {0, blockLength, blockLength, blockLength};
+            rect = {lineSpaceing, blockLength + lineSpaceing, blockLength, blockLength};
             rect.makeDimensions();
 
             int numMoves = text.length();
@@ -118,20 +118,20 @@ class cube {
 
         // Set up the next rect to be drawn
         void nextRect() {
-            if (rect.rightX != window.w) {
-                rect.x = rect.x + blockLength;
+            if (rect.rightX < window.w - lineSpaceing) {
+                rect.x = rect.x + blockLength + lineSpaceing;
                 rect.makeDimensions();  
             }
             else {
-                rect.x = 0;
-                rect.y = rect.y + blockLength;
+                rect.x = lineSpaceing;
+                rect.y = rect.y + blockLength + lineSpaceing;
                 rect.makeDimensions();
             }        
         }
 
         // Draw arrow on the cube
         void drawArrow(int cubeSize) {
-            rect = {0, blockLength, blockLength, blockLength};
+            rect = {lineSpaceing, blockLength + lineSpaceing, blockLength, blockLength};
             rect.makeDimensions();
 
             auto x2Texture = window.loadText("Fonts/times.ttf", "x2", 40);

@@ -9,10 +9,11 @@
 #include <fstream>
 
 int blockLength = 160;
+int lineSpaceing = 15;
 int row = 5;
 int col = 8;
-int windowWidth = blockLength*col;
-int windowHeight = blockLength*row;
+int windowWidth = blockLength*col + lineSpaceing*(col + 1);
+int windowHeight = blockLength*row + lineSpaceing*(row);
 int fps = 15;
 
 win window("Loading Algorithm", windowWidth, windowHeight);
