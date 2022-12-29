@@ -27,11 +27,21 @@ class cube {
         void fixString(std::string newText, int cubeSize) {
             text = newText;
             if (cubeSize == 2) {
-                
+                for (int i = 0; i < text.length(); ++i) {
+                    if (!(text[i] == 'U' || text[i] == 'D'
+                       || text[i] == 'L' || text[i] == 'R'
+                       || text[i] == 'F' || text[i] == 'B'
+                       || text[i] == 'x' || text[i] == 'y' || text[i] == 'z' 
+                       || text[i] == '\'' || text[i] == '2')) 
+                       {
+                        text.erase(i, 1);
+                        --i;
+                       }
+
+                }
             }
             if (cubeSize == 3) {
                 for (int i = 0; i < text.length(); ++i) {
-
                     if (!(text[i] == 'U' || text[i] == 'u' 
                        || text[i] == 'D' || text[i] == 'd' 
                        || text[i] == 'L' || text[i] == 'l' 
@@ -42,17 +52,14 @@ class cube {
                        || text[i] == 'M' || text[i] == 'E' || text[i] == 'S' 
                        || text[i] == '\'' || text[i] == '2')) 
                        {
-
                         text.erase(i, 1);
                         --i;
-
                        }
 
                 }
             }
             if (cubeSize == 4) {
                 for (int i = 0; i < text.length(); ++i) {
-
                     if (!(text[i] == 'U' || text[i] == 'u' 
                        || text[i] == 'D' || text[i] == 'd' 
                        || text[i] == 'L' || text[i] == 'l' 
@@ -63,10 +70,8 @@ class cube {
                        || text[i] == 'M' || text[i] == 'E' || text[i] == 'S' 
                        || text[i] == '\'' || text[i] == '2')) 
                        {
-
                         text.erase(i, 1);
                         --i;
-
                        }
                        
                 }
@@ -135,19 +140,19 @@ class cube {
             rect.makeDimensions();
 
             auto x2Texture = window.loadText("Fonts/times.ttf", "x2", 40);
-            x2Texture.changeColor(&blue);
+            x2Texture.changeColor(&cyan);
 
             auto backTexture = window.loadText("Fonts/times.ttf", "B", 50);
-            backTexture.changeColor(&blue);
+            backTexture.changeColor(&cyan);
 
             auto b2Texture = window.loadText("Fonts/times.ttf", "B2", 40);
-            b2Texture.changeColor(&blue);
+            b2Texture.changeColor(&cyan);
 
             auto sliceTexture = window.loadText("Fonts/times.ttf", "S", 50);
-            sliceTexture.changeColor(&blue);
+            sliceTexture.changeColor(&cyan);
 
             auto s2Texture = window.loadText("Fonts/times.ttf", "S2", 40);
-            s2Texture.changeColor(&blue);
+            s2Texture.changeColor(&cyan);
 
             for (int i = 0; i < text.length(); ++i) {
                 if (i == text.find("U'", i)) {
@@ -788,6 +793,8 @@ class cube {
                     centerText(&sliceTexture.rect);
                     sliceTexture.createTexture(window.renderer);
                     sliceTexture.render(window.renderer);
+
+                    ++i;
                 }
                 else if (i == text.find("S2", i)) {
                     point.x = rect.x + blockLength/2;
@@ -965,6 +972,15 @@ class cube {
         }
 
         void centerText(SDL_Rect* textRect) {
+            SDL_Rect background = rect;
+            background.x = background.x + blockLength/2;
+            background.y = background.y + blockLength/2;
+            background.w = 40;
+            background.h = 40;
+            background.makeDimensions();
+            background.shiftXY();
+            window.fillRect(&black, background);
+
             textRect->x = rect.x + blockLength/2;
             textRect->y = rect.y + blockLength/2;
             textRect->makeDimensions();

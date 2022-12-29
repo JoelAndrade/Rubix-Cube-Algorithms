@@ -3,7 +3,7 @@
 
 #include <SDL_Util.h>
 
-std::string loadText = "R R' U U' L L' D D'"; //U2 R2 F R F' U2 R' F R F'";
+std::string loadText = "R R' U U' L L' D D' F F' B B' S S'"; //U2 R2 F R F' U2 R' F R F'";
 
 int mode = X3;
 
