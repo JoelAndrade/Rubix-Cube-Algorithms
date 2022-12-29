@@ -692,6 +692,91 @@ class cube {
                     makeLeftArrow(point, cubeSize);
                     window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
                 }
+                else if (i == text.find("M'", i)) {
+                    point.x = rect.x + (blockLength/cubeSize) + (blockLength/cubeSize)/2;
+                    point.y = rect.y + (blockLength/cubeSize)/2;
+
+                    for (int i = 0; i < cubeSize - 2; ++i) {
+                        makeUpArrow(point, cubeSize);
+                        window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                        point.x = point.x + blockLength/cubeSize;
+                    }
+
+                    ++i;
+                }
+                else if (i == text.find("M2", i)) {
+                    point.x = rect.x + (blockLength/cubeSize) + (blockLength/cubeSize)/2;
+                    point.y = rect.y + (blockLength/cubeSize)/2;
+
+                    for (int i = 0; i < cubeSize - 2; ++i) {
+                        makeUpArrow(point, cubeSize);
+                        window.drawLines(upArrow, &violet, numArrowPoints, 3, 3);
+                        point.x = point.x + blockLength/cubeSize;
+                    }
+
+                    centerText(&x2Texture.rect);
+                    x2Texture.createTexture(window.renderer);
+                    x2Texture.render(window.renderer);
+
+                    ++i;
+                }
+                else if (i == text.find("M", i)) {
+                    point.x = rect.x + (blockLength/cubeSize) + (blockLength/cubeSize)/2;
+                    point.y = rect.y + blockLength - (blockLength/cubeSize)/2;
+
+                    for (int i = 0; i < cubeSize - 2; ++i) {
+                        makeDownArrow(point, cubeSize);
+                        window.drawLines(downArrow, &violet, numArrowPoints, 3, 3);
+                        point.x = point.x + blockLength/cubeSize;
+                    }
+                }
+                else if (i == text.find("E'", i)) {
+                    point.x = rect.x + (blockLength/cubeSize)/2;
+                    point.y = rect.y + (blockLength/cubeSize) + (blockLength/cubeSize)/2;
+
+                    for (int i = 0; i < cubeSize - 2; ++i) { 
+                        makeLeftArrow(point, cubeSize);
+                        window.drawLines(leftArrow, &violet, numArrowPoints, 3, 3);
+                        point.y = point.y + blockLength/cubeSize;
+                    }
+
+                    ++i;
+                }
+                else if (i == text.find("E2", i)) {
+                    point.x = rect.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = rect.y + (blockLength/cubeSize) + (blockLength/cubeSize)/2;
+
+                    for (int i = 0; i < cubeSize - 2; ++i) { 
+                        makeRightArrow(point, cubeSize);
+                        window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                        point.y = point.y + blockLength/cubeSize;
+                    }
+
+                    centerText(&x2Texture.rect);
+                    x2Texture.createTexture(window.renderer);
+                    x2Texture.render(window.renderer);
+
+                    ++i;
+                }
+                else if (i == text.find("E", i)) {
+                    point.x = rect.x + blockLength - (blockLength/cubeSize)/2;
+                    point.y = rect.y + (blockLength/cubeSize) + (blockLength/cubeSize)/2;
+                    
+                    for (int i = 0; i < cubeSize - 2; ++i) { 
+                        makeRightArrow(point, cubeSize);
+                        window.drawLines(rightArrow, &violet, numArrowPoints, 3, 3);
+                        point.y = point.y + blockLength/cubeSize;
+                    }
+                }
+                else if (i == text.find("S'", i)) {
+
+                }
+                else if (i == text.find("S2", i)) {
+
+                }
+                else if (i == text.find("S", i)) {
+
+                }
                 
                 nextRect();
             }

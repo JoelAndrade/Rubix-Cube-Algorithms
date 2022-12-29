@@ -93,7 +93,7 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: add slice moves M, E, S
+        // TODO: add slice move S
         // TODO: Support 2x2
         // TODO: Support 4x4
         // TODO: Support 5x5

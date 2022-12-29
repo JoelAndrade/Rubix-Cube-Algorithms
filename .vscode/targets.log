@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Dec 28 11:20:51 2022
+# Make data base, printed on Wed Dec 28 17:43:48 2022
 
 # Variables
 
@@ -27,8 +27,7 @@ VBOX_MSI_INSTALL_PATH = D:\Program Files\Oracle\VirtualBox\
 # environment
 LOCALAPPDATA = C:\Users\Joel\AppData\Local
 # environment
-VSCODE_CWD = C:\Users\Joel\App 
-Data\Local\Programs\Microsoft VS Code
+VSCODE_CWD = C:\Users\Joel\AppData\Local\Programs\Microsoft VS Code
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -44,7 +43,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_12116_EHTHCFDGDNEJBDZK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_9164_AKKSBBQCFOCCHQFF
 # environment
 ONEDRIVECOMMERCIAL = D:\Joel\OneDrive - csulb
 # environment
@@ -60,7 +59,8 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\e8a3071ea4344d9d48ef8a4df2c097372b0c5161
+VSCODE_CODE_CACHE_PATH = C:\Users\Joel\AppData\Roaming\Code\CachedData\e8a3071ea4344d9d48ef8a4df2c097 
+372b0c5161
 # environment
 LANG = C
 # default
@@ -96,7 +96,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 12116
+VSCODE_PID = 9164
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -218,8 +218,7 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
-.FEATURES := target-specific order-only second-expansion else 
--if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 5e03
 # environment
@@ -233,7 +232,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1672181192): 22 files, no impossibilities.
+# . (key d:/Users/Joel/Documents/C++/RubixCubeAlgorithms, mtime 1672277726): 22 files, no impossibilities.
 
 # 22 files, no impossibilities in 1 directories.
 
@@ -302,9 +301,9 @@ all:
 # current buf: size = 8174 B / used = 220 B / count = 25 / avg = 8 B
 
 # strcache performance: lookups = 32 / hit rate = 21%
-# hash-ta 
-ble stats:
+# hash-tabl 
+e stats:
 # Load=25/8192=0%, Rehash=0, Collisions=0/32=0%
-# Finished Make data base on Wed Dec 28 11:20:51 2022
+# Finished Make data base on Wed Dec 28 17:43:48 2022
 
  
