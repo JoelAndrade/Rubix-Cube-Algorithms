@@ -120,6 +120,8 @@ class cube {
         SDL_Point rightArrow[5];
         int radius;
         SDL_Point point;
+        const char* font = "Fonts/Agane 55 (roman).ttf";
+        int fontSize = 40;
 
         // Set up the next rect to be drawn
         void nextRect() {
@@ -139,19 +141,19 @@ class cube {
             rect = {lineSpaceing, blockLength + lineSpaceing, blockLength, blockLength};
             rect.makeDimensions();
 
-            auto x2Texture = window.loadText("Fonts/times.ttf", "x2", 40);
+            auto x2Texture = window.loadText(font, "x2", fontSize - 10);
             x2Texture.changeColor(&cyan);
 
-            auto backTexture = window.loadText("Fonts/times.ttf", "B", 50);
+            auto backTexture = window.loadText(font, "B", fontSize);
             backTexture.changeColor(&cyan);
 
-            auto b2Texture = window.loadText("Fonts/times.ttf", "B2", 40);
+            auto b2Texture = window.loadText(font, "B2", fontSize - 10);
             b2Texture.changeColor(&cyan);
 
-            auto sliceTexture = window.loadText("Fonts/times.ttf", "S", 50);
+            auto sliceTexture = window.loadText(font, "S", fontSize);
             sliceTexture.changeColor(&cyan);
 
-            auto s2Texture = window.loadText("Fonts/times.ttf", "S2", 40);
+            auto s2Texture = window.loadText(font, "S2", fontSize - 10);
             s2Texture.changeColor(&cyan);
 
             for (int i = 0; i < text.length(); ++i) {
@@ -980,14 +982,14 @@ class cube {
             SDL_Rect background = rect;
             background.x = background.x + blockLength/2;
             background.y = background.y + blockLength/2;
-            background.w = 40;
-            background.h = 40;
+            background.w = fontSize;
+            background.h = fontSize;
             background.makeDimensions();
             background.shiftXY();
             window.fillRect(&black, background);
 
             textRect->x = rect.x + blockLength/2;
-            textRect->y = rect.y + blockLength/2;
+            textRect->y = rect.y + blockLength/2 + 4;
             textRect->makeDimensions();
             textRect->shiftXY();
         }
