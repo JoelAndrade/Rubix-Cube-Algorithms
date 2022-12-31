@@ -831,6 +831,11 @@ class cube {
                 
                 nextRect();
             }
+            x2Texture.destroy();
+            backTexture.destroy();
+            b2Texture.destroy();
+            sliceTexture.destroy();
+            s2Texture.destroy();
         }
 
         void makeUpArrow(SDL_Point upArrowPoint, int cubeSize) {

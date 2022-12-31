@@ -24,7 +24,7 @@ int main(int argc, char* args[]) {
     IMG_Init(IMG_INIT_JPG);
     TTF_Init();
 
-    text.setup(window.renderer, "Fonts/times.ttf", myCube.text.c_str(), 50, window.w/2, blockLength/2);
+    text.setup(window.renderer, "Fonts/times.ttf", loadText.c_str(), 50, window.w/2, blockLength/2);
     text.color = white;
     text.createTexture(window.renderer);
     text.rect.shiftXY();
@@ -37,6 +37,11 @@ int main(int argc, char* args[]) {
             mode = algorithmImages();
         }
     }
+    SDL_DestroyWindow(window.window); //This closed the window
+    SDL_DestroyRenderer(window.renderer);
+    window.window = NULL;
+    SDL_Quit(); //Closed the SDL program
+    IMG_Quit();
     return 0;
 }
 
@@ -77,7 +82,7 @@ int algorithmImages() {
 
             else if (event.type == SDL_TEXTINPUT) {
                 if (!(SDL_GetModState() & KMOD_CTRL && (event.text.text[0] == 'c' || event.text.text[0] == 'C' || event.text.text[0] == 'v' || event.text.text[0] == 'V'))) {
-                    text.text += event.text.text;
+                    text.text = text.text + event.text.text;
                     text.createTexture(window.renderer);
                     text.changePos(window.w/2, blockLength/2);
                     text.rect.shiftXY();    
@@ -93,7 +98,6 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: Support 2x2
         // TODO: Support 4x4
         // TODO: Support 5x5
 

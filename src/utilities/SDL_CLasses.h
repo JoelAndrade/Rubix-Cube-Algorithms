@@ -12,7 +12,7 @@
 #define PI (3.1415)      
 #define DEG_TO_RAD(deg) (deg * (2.0*PI/360))
 
-#define renderColor 0, 0, 0, 0xFF // black background
+#define RENDERCOLOR 0, 0, 0, 0xFF // black background
 //#define renderColor 255, 255, 255, 0xFF // white background
 class win {
     public:
@@ -20,6 +20,7 @@ class win {
         int h;
         SDL_Window* window = NULL;
         SDL_Renderer* renderer = NULL;
+        SDL_Color renderColor = {RENDERCOLOR};
 
         win() {}
         win(int widthVal, int heightVal) {
@@ -27,14 +28,14 @@ class win {
             h = heightVal;
             window = SDL_CreateWindow("No Title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN);
             renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-            SDL_SetRenderDrawColor(renderer, renderColor);
+            SDL_SetRenderDrawColor(renderer, renderColor.r, renderColor.g, renderColor.b, renderColor.a);
         }
         win(const char* title, int widthVal, int heightVal) {
             w = widthVal;
             h = heightVal;
             window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN);
             renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-            SDL_SetRenderDrawColor(renderer, renderColor);
+            SDL_SetRenderDrawColor(renderer, renderColor.r, renderColor.g, renderColor.b, renderColor.a);
         }
 
         void setWindowSize(int widthVal, int heightVal) {
@@ -69,7 +70,7 @@ class win {
         }
         
         void clearRender() {
-            SDL_SetRenderDrawColor(renderer, renderColor);
+            SDL_SetRenderDrawColor(renderer, renderColor.r, renderColor.g, renderColor.b, renderColor.a);
             SDL_RenderClear(renderer);
         }
         void drawLine(int x1, int y1, int x2, int y2, SDL_Color* color, int xScale = 1, int yScale = 1) { // TODO: Might want to change the parameters to take to point types
@@ -337,6 +338,10 @@ class win {
             void render(SDL_Renderer* renderer) {
                 SDL_RenderCopy(renderer, texture, &originalRect, &newRect);
             }
+
+            void destroy() {
+                SDL_DestroyTexture(texture);
+            }
         };
 
         struct textureText {
@@ -345,7 +350,7 @@ class win {
             SDL_Rect rect;
             SDL_Color color = {0, 0, 0, 0xFF};
             int fontSize = 10;
-            const char* fontFile;
+            const char* fontFile = NULL;
             std::string text = "";
 
             textureText() {}
@@ -439,7 +444,7 @@ class win {
 
             void createTexture(SDL_Renderer* renderer) {
                 if (font != NULL) {
-                    texture = NULL;
+                    SDL_DestroyTexture(texture);
                     SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), color);
                     texture = SDL_CreateTextureFromSurface(renderer, textSurface);
                     
@@ -467,6 +472,13 @@ class win {
                 font = NULL;
                 fontFile = fontFileVal;
                 font = TTF_OpenFont(fontFile, fontSize);
+            }
+
+            void destroy() {
+                SDL_DestroyTexture(texture);
+                TTF_CloseFont(font);
+                fontFile = NULL;
+                delete fontFile;
             }
         };
 };
