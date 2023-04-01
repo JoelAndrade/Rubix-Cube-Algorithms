@@ -85,6 +85,7 @@ int main(int argc, char* args[]) {
     SDL_DestroyRenderer(window.renderer);
     SDL_Quit(); //Closed the SDL program
     IMG_Quit();
+    TTF_Quit();
     return 0;
 }
 
