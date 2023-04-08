@@ -85,6 +85,7 @@ int main(int argc, char* args[]) {
     SDL_DestroyRenderer(window.renderer);
     SDL_Quit(); //Closed the SDL program
     IMG_Quit();
+    TTF_Quit();
     return 0;
 }
 
@@ -214,7 +215,6 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: Support 4x4
         // TODO: Support 5x5
             
         // TODO: Support memory
