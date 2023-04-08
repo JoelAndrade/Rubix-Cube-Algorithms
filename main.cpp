@@ -224,7 +224,6 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: Support 4x4
         // TODO: Support 5x5
             
         // TODO: Support memory
