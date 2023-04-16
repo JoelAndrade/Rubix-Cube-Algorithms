@@ -216,6 +216,7 @@ int algorithmImages() {
         myCube.drawCube(mode);
 
         // TODO: Support 5x5
+        // fix a bug with 2F type algorythms
             
         // TODO: Support memory
 
