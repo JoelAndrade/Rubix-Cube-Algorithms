@@ -1,8 +1,6 @@
 #ifndef CUBE_H
 #define CUBE_H
 
-// #include "NxN.h"
-
 #include "../main.h"
 #include <iostream>
 #include <string>
@@ -157,68 +155,132 @@ class cube {
                 }
             }
 
-            // Checkout that ', 2, or w are not in the front of string
-            if (cubeSize < X5) {
-                while (text[0] == '\'' || text[0] == '2' || text[0] == 'w') {
+            switch (cubeSize)
+            {
+            case X2:
+                // Checkout that ' and 2 are not in the front of string
+                while (text[0] == '\'' || text[0] == '2') {
                     text.erase(0, 1);
                 }
-            }
-            else {
+
+                for (int i = 0; i < text.length(); ++i) {
+                    // Check the string doesnt have consecutive 's and 2's after an ' or 2
+                    while ((text[i]     == '\'' || text[i]     == '2') && 
+                           (text[i + 1] == '\'' || text[i + 1] == '2')) 
+                    {
+                        text.erase(i + 1, 1);
+                    }
+                }
+                break;
+            
+            case X3:
+                // Checkout that ' and 2 are not in the front of string
+                while (text[0] == '\'' || text[0] == '2') {
+                    text.erase(0, 1);
+                }
+
+                for (int i = 0; i < text.length(); ++i) {
+                    // Check the string doesnt have consecutive 's and 2's after an ' or 2
+                    while ((text[i]     == '\'' || text[i]     == '2') && 
+                           (text[i + 1] == '\'' || text[i + 1] == '2')) 
+                    {
+                        text.erase(i + 1, 1);
+                    }
+                }
+                break;
+
+            case X4:
+                // ' or w can not be first
                 while (text[0] == '\'' || text[0] == 'w') {
                     text.erase(0, 1);
                 }
-            }
 
-            for (int i = 0; i < text.length(); ++i) {
-                // Check for trailing w after a w
-                while (text[i] == 'w' && text[i + 1] == 'w') {
-                    text.erase(i + 1, 1);
+                // A 2 can not be followed with a 2 or lowercase letter 
+                while (text[0] == '2' && (text[1] == '2' || (('a' <= text[1]) && (text[1] <= 'z')))) {
+                    text.erase(0, 1);
                 }
 
-                // Check that w is being used with a lowercase letter
-                while (text[i] == 'w' && (('a' <= text[i - 1]) && (text[i - 1] <= 'z'))) {
-                    text.erase(i, 1);
-                }
+                // The second "for loop" is to double check
+                for (int j = 0; j < 2; ++j) {
+                    for (int i = 0; i < text.length(); ++i) {
 
-                // Check that a 3 will follow with a capital letter
-                while (text[i] == '3' && (!(('A' <= text[i + 1]) && (text[i + 1] <= 'Z')))) {
-                    text.erase(i, 1);
-                }
+                        // Check for trailing w after a w
+                        while (text[i] == 'w' && text[i + 1] == 'w') {
+                            text.erase(i + 1, 1);
+                        }
 
-                // // Check that a 3 will follow with a capital letter
-                // while (text[i] == '3' && (('A' <= text[i + 1]) && (text[i + 1] <= 'Z')) && text[i + 2] != 'w') {
-                //     text.erase(i, 1);
-                // }
+                        // Check that w is being used with a capital letter
+                        while (text[i] == 'w' && !(('A' <= text[i - 1]) && (text[i - 1] <= 'Z'))) {
+                            text.erase(i, 1);
+                        }
 
-                // Check that a 4 will follow with a capital letter
-                while (text[i] == '4' && (!(('A' <= text[i + 1]) && (text[i + 1] <= 'Z')))) {
-                    text.erase(i, 1);
-                }
+                        // Check that a 3 will follow with a capital letter
+                        while (text[i] == '3' && (!(('A' <= text[i + 1]) && (text[i + 1] <= 'Z')))) {
+                            text.erase(i, 1);
+                        }
 
-                // while (text[i] == '4' && (('A' <= text[i + 1]) && (text[i + 1] <= 'Z')) && text[i + 2] != 'w') {
-                //     text.erase(i, 1);
-                // }
+                        // Check the string doesnt have consecutive 's and w's after an ' or 2
+                        while ((text[i] == '\'' || text[i] == '2') && 
+                            (text[i + 1] == '\'' || text[i + 1] == 'w')) 
+                        {
+                            text.erase(i + 1, 1);
+                        }
 
-                if (cubeSize < X5) {
-                    // Check the string doesnt have consecutive 's, 2's, or w's after an ' or 2
-                    while ((text[i]     == '\'' || text[i]     == '2') && 
-                        (text[i + 1] == '\'' || text[i + 1] == '2' || text[i + 1] == 'w')) 
-                    {
-                        text.erase(i + 1, 1);
+                        // Checks that 2's are used correctly
+                        while ((text[i] == '2' || text[i] == '\'') && text[i + 1] == '2' && !(('A' <= text[i + 2]) && (text[i + 2]) <= 'Z')) {
+                            text.erase(i + 1, 1);
+                        }
                     }
                 }
-                else {
-                    // Check the string doesnt have consecutive 's or w's after an '
-                    while ((text[i] == '\'') && 
-                        (text[i + 1] == '\'' || text[i + 1] == 'w')) 
-                    {
-                        text.erase(i + 1, 1);
-                    }
+                break;
 
-                    while (text[i] == '2' && text[i + 1] == '2' && (!(('A' <= text[i + 2]) && (text[i + 2]) <= 'Z'))) {
-                        text.erase(i + 1, 1);
+            case X5:
+                // ' or w can not be first
+                while (text[0] == '\'' || text[0] == 'w') {
+                    text.erase(0, 1);
+                }
+
+                // A 2 can not be followed with a 2
+                while (text[0] == '2' && text[1] == '2') {
+                    text.erase(0, 1);
+                }
+
+                // The second "for loop" is to double check
+                for (int j = 0; j < 2; ++j) {
+                    for (int i = 0; i < text.length(); ++i) {
+
+                        // Check for trailing w after a w
+                        while (text[i] == 'w' && text[i + 1] == 'w') {
+                            text.erase(i + 1, 1);
+                        }
+
+                        // Check that w is being used with a capital letter
+                        while (text[i] == 'w' && !(('A' <= text[i - 1]) && (text[i - 1] <= 'Z'))) {
+                            text.erase(i, 1);
+                        }
+
+                        // Check that a 3 or 4 will follow with a capital letter
+                        while ((text[i] == '3' || text[i] == '4') && (!(('A' <= text[i + 1]) && (text[i + 1] <= 'Z')))) {
+                            text.erase(i, 1);
+                        }
+
+                        // Check the string doesnt have consecutive 's and w's after an ' or 2
+                        while ((text[i] == '\'' || text[i] == '2') && 
+                            (text[i + 1] == '\'' || text[i + 1] == 'w')) 
+                        {
+                            text.erase(i + 1, 1);
+                        }
+
+                        // Checks that 2's are used correctly
+                        while ((text[i] == '2' || text[i] == '\'') && text[i + 1] == '2' && !(('A' <= text[i + 2]) && (text[i + 2]) <= 'Z')) {
+                            text.erase(i + 1, 1);
+                        }
                     }
                 }
+                break;
+                
+            default:
+                break;
             }
             // std::cout << text << std::endl;
         }
@@ -230,7 +292,7 @@ class cube {
 
             int numMoves = text.length();
             for (int i = 0; i < text.length(); ++i) {
-                if (text[i] == '\'' || text[i] == '2' || text[i] == 'w' || text[i] == '3') {
+                if (text[i] == '\'' || text[i] == '2' || text[i] == 'w' || text[i] == '3' || text[i] == '4') {
                     --numMoves;
                 }               
             }

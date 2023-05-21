@@ -207,7 +207,13 @@ int algorithmImages() {
                     text.changePos(window.w/2, topRect.h/2);
                     text.rect.shiftXY();    
                 }
-                
+            }
+
+            else if (event.type == SDL_MOUSEBUTTONDOWN) {
+                if (event.button.button == SDL_BUTTON_RIGHT) {
+                    SDL_StopTextInput();
+                    return MAINMENU;
+                }
             }
         }
         window.clearRender();
@@ -215,8 +221,8 @@ int algorithmImages() {
         myCube.fixString(text.text, mode);
         myCube.drawCube(mode);
 
-        // TODO: Support 5x5
-        // fix a bug with 2F type algorythms
+        // 4x4 is fixed as far as i can tell
+        // 5x5 need to check if 5x5 is working correctly
             
         // TODO: Support memory
 
