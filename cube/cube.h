@@ -13,31 +13,31 @@
 
 #define fontPath "Fonts/Agane 55 (roman).ttf"
 
-class cube {
+class Cube {
     public:
         SDL_Rect rect;
         std::string text;
         
-        textureText x2Texture;
-        textureText backTexture;
-        textureText b2Texture;
-        textureText _3bTexture;
-        textureText _3bx2Texture;
-        textureText sliceTexture;
-        textureText s2Texture;
-        textureText wide3Texture;
-        textureText wide3_x2Texture;
-        textureText backWide3Texture;
-        textureText backWide3_x2Texture;
-        textureText _3Texture;
-        textureText _3x2Texture;
-        textureText wide4Texture;
-        textureText wide4_x2Texture;
-        textureText backWide4Texture;
-        textureText backWide4_x2Texture;
+        texture_text x2Texture;
+        texture_text backTexture;
+        texture_text b2Texture;
+        texture_text _3bTexture;
+        texture_text _3bx2Texture;
+        texture_text sliceTexture;
+        texture_text s2Texture;
+        texture_text wide3Texture;
+        texture_text wide3_x2Texture;
+        texture_text backWide3Texture;
+        texture_text backWide3_x2Texture;
+        texture_text _3Texture;
+        texture_text _3x2Texture;
+        texture_text wide4Texture;
+        texture_text wide4_x2Texture;
+        texture_text backWide4Texture;
+        texture_text backWide4_x2Texture;
         
-        cube() {}
-        cube(std::string text) {
+        Cube() {}
+        Cube(std::string text) {
             this->text = text;
         }
 
@@ -62,23 +62,23 @@ class cube {
             backWide4Texture.init(window.renderer,    fontPath, "B4w",   fontSize - 20);
             backWide4_x2Texture.init(window.renderer, fontPath, "B4wx2", fontSize - 27);
             
-            x2Texture.changeColor(&white);
-            backTexture.changeColor(&white);
-            b2Texture.changeColor(&white);
-            _3bTexture.changeColor(&white);
-            _3bx2Texture.changeColor(&white);
-            sliceTexture.changeColor(&white);
-            s2Texture.changeColor(&white);
-            wide3Texture.changeColor(&white);
-            wide3_x2Texture.changeColor(&white);
-            backWide3Texture.changeColor(&white);
-            backWide3_x2Texture.changeColor(&white);
-            _3Texture.changeColor(&white);
-            _3x2Texture.changeColor(&white);
-            wide4Texture.changeColor(&white);
-            wide4_x2Texture.changeColor(&white);
-            backWide4Texture.changeColor(&white);
-            backWide4_x2Texture.changeColor(&white);
+            x2Texture.change_color(&white);
+            backTexture.change_color(&white);
+            b2Texture.change_color(&white);
+            _3bTexture.change_color(&white);
+            _3bx2Texture.change_color(&white);
+            sliceTexture.change_color(&white);
+            s2Texture.change_color(&white);
+            wide3Texture.change_color(&white);
+            wide3_x2Texture.change_color(&white);
+            backWide3Texture.change_color(&white);
+            backWide3_x2Texture.change_color(&white);
+            _3Texture.change_color(&white);
+            _3x2Texture.change_color(&white);
+            wide4Texture.change_color(&white);
+            wide4_x2Texture.change_color(&white);
+            backWide4Texture.change_color(&white);
+            backWide4_x2Texture.change_color(&white);
         }
 
         // Fixes the string for the given cube size
@@ -2759,7 +2759,7 @@ class cube {
             upArrow[4].y = center.y;
         }
 
-        void renderCenterText(textureText* letterTexture) {
+        void renderCenterText(texture_text* letterTexture) {
             SDL_Rect background = rect;
             background.x = background.x + blockLength/2;
             background.y = background.y + blockLength/2;
@@ -2773,7 +2773,7 @@ class cube {
             letterTexture->rect.y = rect.y + blockLength/2 + 4;
             letterTexture->rect.makeDimensions();
             letterTexture->rect.shiftXY();
-            letterTexture->createTexture(window.renderer);
+            letterTexture->create_texture(window.renderer);
             letterTexture->render(window.renderer);
         }
 

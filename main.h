@@ -22,7 +22,7 @@ win window(windowWidth, windowHeight, "Loading Algorithm");
 
 enum menu {
     QUIT,
-    MAINMENU,
+    Main_Menu,
     X2,
     X3,
     X4,
@@ -31,7 +31,7 @@ enum menu {
     X7
 };
 
-int mainMenu();
-int algorithmImages();
+int main_menu();
+int algorithm_images();
 
 #endif // MAIN_H
