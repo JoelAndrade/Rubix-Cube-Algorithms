@@ -8,19 +8,19 @@
 #include <SDL_CLasses.h>
 #include <fstream>
 
-int windowWidth = 1280; //1415, 1280
-int windowHeight = 720; //875, 720
-int row = 4;
-int col = 8;
-const double ratio = windowHeight/windowWidth;
-int lineSpaceing = 7*(windowHeight/720.0); //15
-int blockLength = (windowWidth/col) - (2*lineSpaceing); //160
+#define NUM_ROW (4)
+#define NUM_COL (8)
+
+extern const double ratio;
+extern int line_spaceing; //15
+extern int block_length; //160
 
 int fps = 15;
 
-win window(windowWidth, windowHeight, "Loading Algorithm");
+extern Window window;
 
-enum menu {
+typedef enum Mode_e
+{
     QUIT,
     Main_Menu,
     X2,
@@ -29,7 +29,7 @@ enum menu {
     X5,
     X6,
     X7
-};
+} Mode_t;
 
 int main_menu();
 int algorithm_images();

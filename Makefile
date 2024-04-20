@@ -19,4 +19,4 @@ all:
 	-I SDL2-Utilites/include -I Fonts -I SDL2-Utilites/SDL2 \
 	-L SDL2-Utilites/lib \
 	-o Algorithm_Maker  Images/icon.res \
-	-l mingw32 -l SDL2main -l SDL2 -l SDL2_image -l SDL2_ttf \
+	-l mingw32 -l SDL2main -l SDL2 -l SDL2_image -l SDL2_ttf
