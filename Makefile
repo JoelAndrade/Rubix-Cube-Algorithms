@@ -1,26 +1,6 @@
-all:
-	windres Images/icon.rc -O coff -o Images/icon.res \
+main:
+	cmake --build build --target main
 
-	# debug
-	g++ \
-	main.cpp \
-	cube_class/*.cpp \
-	cube_mode/*.cpp \
-	SDL2-Utilites/SDL2/*.cpp \
-	-g \
-	-I SDL2-Utilites/include -I Fonts -I SDL2-Utilites/SDL2/ -I cube_class \
-	-L SDL2-Utilites/lib \
-	-o main \
-	-l mingw32 -l SDL2main -l SDL2 -l SDL2_image -l SDL2_ttf
-
-	# app
-	g++ \
-	-mwindows -static-libgcc -static-libstdc++ \
-	main.cpp \
-	cube_class/*.cpp \
-	cube_mode/*.cpp \
-	SDL2-Utilites/SDL2/*.cpp \
-	-I SDL2-Utilites/include -I Fonts -I SDL2-Utilites/SDL2 -I cube_class \
-	-L SDL2-Utilites/lib \
-	-o Algorithm_Maker  Images/icon.res \
-	-l mingw32 -l SDL2main -l SDL2 -l SDL2_image -l SDL2_ttf
+app:
+	windres Images/icon.rc -O coff -o Images/icon.res
+	cmake --build build
