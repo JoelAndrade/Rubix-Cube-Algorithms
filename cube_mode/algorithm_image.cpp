@@ -1,10 +1,11 @@
-#include "../main.h"
+#include "main.h"
 #include "algorithm_image.h"
 
 #include <cube_2x2.h>
 #include <cube_3x3.h>
 #include <cube_4x4.h>
 #include <cube_5x5.h>
+
 #include <SDL_Util.h>
 
 template <class CubeSize>
