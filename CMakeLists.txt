@@ -17,10 +17,7 @@ target_link_libraries(main
     lib_cube_class
     lib_cube_mode
     lib_SDL2
-)
-
-target_link_libraries(main
-    "-l mingw32"
+    mingw32
 )
 
 target_link_libraries(Algorithm_Maker
@@ -30,8 +27,8 @@ target_link_libraries(Algorithm_Maker
 )
 
 target_link_libraries(Algorithm_Maker
-    "-l mingw32"
-    "-mwindows"
-    "-static-libgcc"
-    "-static-libstdc++"
+    mingw32
+    -mwindows
+    -static-libgcc
+    -static-libstdc++
 )

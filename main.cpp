@@ -16,7 +16,7 @@
 
 int mode;
 
-Window window(WINDOW_WIDTH, WINDOW_HEIGHT, "Loading Algorithm");
+Window window(WINDOW_WIDTH, WINDOW_HEIGHT, "Loading Algorithm", SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 Uint32 starting_tick;
 SDL_Event event;
 
@@ -176,6 +176,10 @@ int main_menu()
         }
 
         window.clear_render();
+        SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(window.renderer, 0, 0, 0, 0);
+        SDL_RenderClear(window.renderer);
+
 
         window.draw_rect(SDL_cyan, 3, 3);
         window.draw_rect(SDL_cyan, top_rect, 2, 2);
